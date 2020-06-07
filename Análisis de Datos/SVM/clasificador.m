@@ -43,7 +43,7 @@ end
 labels = [zeros(length(features)/2,1); ones(length(features)/2,1)];
 
 %SVM con libreria
-k=7; % Elegir numero de particiones 
+k=3; % Elegir numero de particiones 
 %Se utilizó K=3 para opciones 1-6 y K=7 para opciones 7-12 para obtener
 % las matrices de confusion presentadas
 cvFolds = crossvalind('Kfold', labels, k);   
