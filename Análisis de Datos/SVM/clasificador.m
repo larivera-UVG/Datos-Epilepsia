@@ -4,7 +4,15 @@
 % Opcion 1-6: caracteristicas pacientes normales ojos abiertos/ pacientes con crisis 
 % Opcion 7-12: caracteristicas pacientes normales ojos cerrados/ pacientes con crisis 
 % La matriz de confusion y resultados se despliegan en consola
+% Elegir experimento 1 para ventana 150 muestras y experimento 2 para
+% ventana 80 muestras
 opcion =1;
+experimento =1;
+if experimento==1
+    load Workspace_ventana_150muestras.mat
+elseif experimento ==2;
+    load Workspace_ventana_80muestras.mat
+end
 if opcion==1
     features = MatrizFeatures1;
 elseif opcion==2
@@ -36,7 +44,7 @@ labels = [zeros(length(features)/2,1); ones(length(features)/2,1)];
 
 %SVM con libreria
 k=7; % Elegir numero de particiones 
-%Se utilizó K=3 para opciones 1-6 y K=7 para opciones 7-12 para obtener
+%Se utilizÃ³ K=3 para opciones 1-6 y K=7 para opciones 7-12 para obtener
 % las matrices de confusion presentadas
 cvFolds = crossvalind('Kfold', labels, k);   
 cp = classperf(labels);                      %# init performance tracker
