@@ -89,12 +89,12 @@ setdbprefs('NullStringRead', 'null');
 conn = database('mysql', 'root', 'secret');
 
 %Read data from database.
-curs = exec(conn, ['SELECT 	datos.id_paciente'...
-    ' ,	datos.Sexo'...
-    ' ,	datos.Edad'...
-    ' ,	datos.`Condición`'...
-    ' ,	datos.EEG'...
-    ' FROM 	`proyecto`.datos WHERE datos.id_paciente= "' ...
+curs = exec(conn, ['SELECT 	pacientes.id_paciente'...
+    ' ,	pacientes.Sexo'...
+    ' ,	pacientes.Edad'...
+    ' ,	pacientes.`Condición`'...
+    ' ,	pacientes.EEG'...
+    ' FROM 	`proyecto`.pacientes WHERE pacientes.id_paciente= "' ...
     id_paciente...
     '"']);
 
@@ -104,25 +104,18 @@ close(curs);
 %Assign data to output variable
 datosDB = curs.Data;
 
-%Leer los datos y mostrarlos en la interfaz
-n=1:1:length(datosDB(:,1));
-for i=1:length(n)
-    if(strcmp(datosDB(i,1), id_paciente))
-        sexo = datosDB(i,2);
-        edad = datosDB(i,3);
-        condicion = datosDB(i,4);
-        EEG = datosDB(i,5);
-        
-        set(handles.sexo,'String',sexo);
-        set(handles.edad,'String',edad);
-        set(handles.cond,'String',condicion);
-        
-        bandera=1;
-    end
-end
-if (bandera==0)
+if(strcmp(datosDB(1,1), 'No Data'))
     errordlg('Paciente no encontrado','Curso_GUIDE');
+    ini = char(' ');
+    set(handles.sexo,'String',ini);
+    set(handles.edad,'String',ini);
+    set(handles.cond,'String',ini);
+else
+    set(handles.sexo,'String',datosDB(1,2));
+    set(handles.edad,'String',datosDB(1,3));
+    set(handles.cond,'String',datosDB(1,4));
 end
+
 %Close database connection.
 close(conn);
 
@@ -150,8 +143,6 @@ function npac_Callback(hObject, eventdata, handles)
 Val = get(hObject,'String');
 handles.npac=Val;
 guidata(hObject,handles);
-
-
 
 % Hints: get(hObject,'String') returns contents of npac as text
 %        str2double(get(hObject,'String')) returns contents of npac as a double
