@@ -22,7 +22,7 @@ function varargout = Ejemplo(varargin)
 
 % Edit the above text to modify the response to help Ejemplo
 
-% Last Modified by GUIDE v2.5 15-Jul-2020 11:18:04
+% Last Modified by GUIDE v2.5 22-Jul-2020 12:07:25
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -114,6 +114,12 @@ else
     set(handles.sexo,'String',datosDB(1,2));
     set(handles.edad,'String',datosDB(1,3));
     set(handles.cond,'String',datosDB(1,4));
+    ruta='C:\Users\mafer\OneDrive\Escritorio\Noveno Semestre\Diseño e Innovación\Resultados\Señales\';
+    busqueda=strcat(ruta,id_paciente);
+    fileID=fopen(busqueda,'r');
+    archivo = fscanf(fileID,'%d');
+    l=length(archivo);
+    plot(handles.axes1, l, archivo);
 end
 
 %Close database connection.
@@ -159,3 +165,12 @@ function npac_CreateFcn(hObject, eventdata, handles)
 if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor','white');
 end
+
+
+% --- Executes on button press in pushbutton3.
+function pushbutton3_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton3 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+close(Ejemplo);
+principal
