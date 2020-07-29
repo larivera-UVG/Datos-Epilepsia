@@ -22,7 +22,7 @@ function varargout = Escritura(varargin)
 
 % Edit the above text to modify the response to help Escritura
 
-% Last Modified by GUIDE v2.5 22-Jul-2020 12:03:54
+% Last Modified by GUIDE v2.5 29-Jul-2020 09:45:36
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -79,7 +79,36 @@ function npac_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 Val = get(hObject,'String');
-handles.npac=Val;
+conn = database('mysql', 'root', 'secret');
+
+%Read data from database.
+curs = exec(conn, ['SELECT 	pacientes.id_paciente'...
+    ' ,	pacientes.Sexo'...
+    ' ,	pacientes.Edad'...
+    ' ,	pacientes.`Condición`'...
+    ' ,	pacientes.EEG'...
+    ' FROM 	`proyecto`.pacientes WHERE pacientes.id_paciente= "' ...
+    Val...
+    '"']);
+
+curs = fetch(curs);
+close(curs);
+
+%Assign data to output variable
+datosDB = curs.Data;
+
+if(strcmp(datosDB(1,1), Val))
+    errordlg('ID Paciente ya existente','Curso_GUIDE');
+else
+    handles.npac=Val;
+end
+
+%Close database connection.
+close(conn);
+
+%Clear variables
+clear curs conn
+
 guidata(hObject,handles);
 
 % Hints: get(hObject,'String') returns contents of npac as text
@@ -125,32 +154,6 @@ if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgr
 end
 
 
-
-function cond_Callback(hObject, eventdata, handles)
-% hObject    handle to cond (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-Val = get(hObject,'String');
-handles.cond=Val;
-guidata(hObject,handles);
-
-% Hints: get(hObject,'String') returns contents of cond as text
-%        str2double(get(hObject,'String')) returns contents of cond as a double
-
-
-% --- Executes during object creation, after setting all properties.
-function cond_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to cond (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    empty - handles not created until after all CreateFcns called
-
-% Hint: edit controls usually have a white background on Windows.
-%       See ISPC and COMPUTER.
-if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
-    set(hObject,'BackgroundColor','white');
-end
-
-
 % --- Executes on selection change in popupmenu1.
 function popupmenu1_Callback(hObject, eventdata, handles)
 % hObject    handle to popupmenu1 (see GCBO)
@@ -184,30 +187,6 @@ if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgr
 end
 
 
-% --- Executes on button press in pushbutton1.
-function pushbutton1_Callback(hObject, eventdata, handles)
-% hObject    handle to pushbutton1 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-[file,path,indx] = uigetfile( ...
-{'*.m;*.mlx;*.fig;*.mat;*.slx;*.mdl',...
-    'MATLAB Files (*.m,*.mlx,*.fig,*.mat,*.slx,*.mdl)';
-   '*.m;*.mlx','Code files (*.m,*.mlx)'; ...
-   '*.fig','Figures (*.fig)'; ...
-   '*.mat','MAT-files (*.mat)'; ...
-   '*.mdl;*.slx','Models (*.slx, *.mdl)'; ...
-   '*.*',  'All Files (*.*)'}, ...
-   'Select a File');
-if isequal(file,0)
-   disp('User selected Cancel');
-else
-   disp(['User selected ', fullfile(path,file)]);
-   fileID=fopen(strcat(path,file),'r');
-   archivo = fscanf(fileID,'%d');
-end
-
-
-
 % --- Executes on button press in pushbutton2.
 function pushbutton2_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton2 (see GCBO)
@@ -217,7 +196,7 @@ id=handles.npac;
 % sexo=handles.popupmenu1;
 sexo = handles.popupmenu1.String{handles.popupmenu1.Value};
 edad=str2double(handles.edad);
-cond=handles.cond;
+cond=handles.popupmenu2.String{handles.popupmenu2.Value};;
 %------ Conexion con la base de datos------------------------
 conn = database('mysql', 'root', 'secret');
 nuevo={id,sexo,edad,cond};
@@ -246,3 +225,35 @@ function pushbutton4_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 close(Escritura);
 principal
+
+
+% --- Executes on selection change in popupmenu2.
+function popupmenu2_Callback(hObject, eventdata, handles)
+% hObject    handle to popupmenu2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+opcion=get(handles.popupmenu2,'Value');
+switch opcion
+    case 1
+        cond='SANO';
+    case 2
+        cond='ENFERMO';
+    otherwise
+end
+set(handles.popupmenu2, 'UserData', cond);
+
+% Hints: contents = cellstr(get(hObject,'String')) returns popupmenu2 contents as cell array
+%        contents{get(hObject,'Value')} returns selected item from popupmenu2
+
+
+% --- Executes during object creation, after setting all properties.
+function popupmenu2_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to popupmenu2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: popupmenu controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
