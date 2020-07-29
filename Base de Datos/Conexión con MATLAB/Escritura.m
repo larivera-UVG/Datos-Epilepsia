@@ -79,36 +79,7 @@ function npac_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 Val = get(hObject,'String');
-conn = database('mysql', 'root', 'secret');
-
-%Read data from database.
-curs = exec(conn, ['SELECT 	pacientes.id_paciente'...
-    ' ,	pacientes.Sexo'...
-    ' ,	pacientes.Edad'...
-    ' ,	pacientes.`Condición`'...
-    ' ,	pacientes.EEG'...
-    ' FROM 	`proyecto`.pacientes WHERE pacientes.id_paciente= "' ...
-    Val...
-    '"']);
-
-curs = fetch(curs);
-close(curs);
-
-%Assign data to output variable
-datosDB = curs.Data;
-
-if(strcmp(datosDB(1,1), Val))
-    errordlg('ID Paciente ya existente','Curso_GUIDE');
-else
-    handles.npac=Val;
-end
-
-%Close database connection.
-close(conn);
-
-%Clear variables
-clear curs conn
-
+handles.npac=Val;
 guidata(hObject,handles);
 
 % Hints: get(hObject,'String') returns contents of npac as text
@@ -199,11 +170,23 @@ edad=str2double(handles.edad);
 cond=handles.popupmenu2.String{handles.popupmenu2.Value};;
 %------ Conexion con la base de datos------------------------
 conn = database('mysql', 'root', 'secret');
-nuevo={id,sexo,edad,cond};
-columnas={'id_paciente','Sexo','Edad','Condición'};
-insert(conn,'pacientes',columnas,nuevo);
-close(conn);
-msgbox('Se ha guardado correctamente','Mensaje');
+query = ['SELECT * ' ...
+    'FROM proyecto.pacientes WHERE pacientes.id_paciente= "' ...
+    id...
+    '"'];
+data = fetch(conn,query);
+
+if(isempty(data)==0)
+    errordlg('ID Paciente ya existente','Curso_GUIDE');
+else
+    nuevo={id,sexo,edad,cond};
+    columnas={'id_paciente','Sexo','Edad','Condición'};
+    insert(conn,'pacientes',columnas,nuevo);
+    close(conn);
+    msgbox('Se ha guardado correctamente','Mensaje');
+    clear conn query
+end
+
 
 
 % --- Executes on button press in pushbutton3.
@@ -213,7 +196,6 @@ function pushbutton3_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 set(handles.npac,'String',' ');
 set(handles.edad,'String',' ');
-set(handles.cond,'String',' ');
 guidata(hObject,handles);
 
 
