@@ -132,9 +132,9 @@ function popupmenu1_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 opcion=get(handles.popupmenu1,'Value');
 switch opcion
-    case 1
-        sexo='F';
     case 2
+        sexo='F';
+    case 3
         sexo='M';
     otherwise
 end
@@ -164,10 +164,9 @@ function pushbutton2_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 id=handles.npac;
-% sexo=handles.popupmenu1;
 sexo = handles.popupmenu1.String{handles.popupmenu1.Value};
 edad=str2double(handles.edad);
-cond=handles.popupmenu2.String{handles.popupmenu2.Value};;
+cond=handles.popupmenu2.String{handles.popupmenu2.Value};
 %------ Conexion con la base de datos------------------------
 conn = database('mysql', 'root', 'secret');
 query = ['SELECT * ' ...
@@ -194,9 +193,8 @@ function pushbutton3_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton3 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-set(handles.npac,'String',' ');
-set(handles.edad,'String',' ');
-guidata(hObject,handles);
+close(Escritura);
+Escritura
 
 
 
@@ -216,9 +214,9 @@ function popupmenu2_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 opcion=get(handles.popupmenu2,'Value');
 switch opcion
-    case 1
-        cond='SANO';
     case 2
+        cond='SANO';
+    case 3
         cond='ENFERMO';
     otherwise
 end
