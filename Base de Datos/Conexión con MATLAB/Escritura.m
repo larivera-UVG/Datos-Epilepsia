@@ -132,6 +132,8 @@ function popupmenu1_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 opcion=get(handles.popupmenu1,'Value');
 switch opcion
+    case 1
+        sexo ='';
     case 2
         sexo='F';
     case 3
@@ -175,15 +177,19 @@ query = ['SELECT * ' ...
     '"'];
 data = fetch(conn,query);
 
-if(isempty(data)==0)
-    errordlg('ID Paciente ya existente','Curso_GUIDE');
+if((isempty(id)==1) || (isempty(sexo)==1) || (isnan(edad)==1) || (isempty(cond)==1))
+    errordlg('Ingrese todos los campos','Error');
 else
-    nuevo={id,sexo,edad,cond};
-    columnas={'id_paciente','Sexo','Edad','Condición'};
-    insert(conn,'pacientes',columnas,nuevo);
-    close(conn);
-    msgbox('Se ha guardado correctamente','Mensaje');
-    clear conn query
+    if(isempty(data)==0)
+        errordlg('ID Paciente ya existente','Error');
+    else
+        nuevo={id,sexo,edad,cond};
+        columnas={'id_paciente','Sexo','Edad','Condición'};
+        insert(conn,'pacientes',columnas,nuevo);
+        close(conn);
+        msgbox('Se ha guardado correctamente','Mensaje');
+        clear conn query
+    end   
 end
 
 
@@ -214,6 +220,8 @@ function popupmenu2_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 opcion=get(handles.popupmenu2,'Value');
 switch opcion
+    case 1
+        cond='';
     case 2
         cond='SANO';
     case 3
