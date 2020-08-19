@@ -22,7 +22,7 @@ function varargout = Ejemplo(varargin)
 
 % Edit the above text to modify the response to help Ejemplo
 
-% Last Modified by GUIDE v2.5 22-Jul-2020 12:07:25
+% Last Modified by GUIDE v2.5 19-Aug-2020 10:07:21
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -81,52 +81,45 @@ function pushbutton1_Callback(hObject, eventdata, handles)
 id_paciente=handles.npac;
 bandera=0;
 %------ Conexion con la base de datos------------------------
-%Set preferences with setdbprefs.
-setdbprefs('DataReturnFormat', 'cellarray');
-setdbprefs('NullNumberRead', 'NaN');
-setdbprefs('NullStringRead', 'null');
-
 conn = database('mysql', 'root', 'secret');
 
-%Read data from database.
-curs = exec(conn, ['SELECT 	pacientes.id_paciente'...
-    ' ,	pacientes.Sexo'...
-    ' ,	pacientes.Edad'...
-    ' ,	pacientes.`Condición`'...
-    ' ,	pacientes.EEG'...
-    ' FROM 	`proyecto`.pacientes WHERE pacientes.id_paciente= "' ...
+%Set query to execute on the database
+query = ['SELECT * ' ...
+    'FROM proyecto.pacientes WHERE pacientes.id_paciente= "' ...
     id_paciente...
-    '"']);
+    '"'];
 
-curs = fetch(curs);
-close(curs);
+query2 = ['SELECT id_prueba, ' ...
+    '	Fecha, ' ...
+    '	Hora, ' ...
+    '	Duración, ' ...
+    '	Prueba ' ...
+    'FROM proyecto.pruebas WHERE pruebas.id_paciente= "' ...
+    id_paciente...
+    '"'];
 
-%Assign data to output variable
-datosDB = curs.Data;
+data = fetch(conn,query);
+data2 = fetch(conn,query2);
 
-if(strcmp(datosDB(1,1), 'No Data'))
+if(isempty(data)==1)
     errordlg('Paciente no encontrado','Curso_GUIDE');
     ini = char(' ');
     set(handles.sexo,'String',ini);
     set(handles.edad,'String',ini);
     set(handles.cond,'String',ini);
 else
-    set(handles.sexo,'String',datosDB(1,2));
-    set(handles.edad,'String',datosDB(1,3));
-    set(handles.cond,'String',datosDB(1,4));
-    ruta='C:\Users\mafer\OneDrive\Escritorio\Noveno Semestre\Diseño e Innovación\Resultados\Señales\';
-    busqueda=strcat(ruta,id_paciente);
-    fileID=fopen(busqueda,'r');
-    archivo = fscanf(fileID,'%d');
-    l=length(archivo);
-    plot(handles.axes1, l, archivo);
+    set(handles.sexo,'String',sprintf('%s',cell2mat(data.Sexo)));
+    set(handles.edad,'String',sprintf('%d',data.Edad));
+    set(handles.cond,'String',sprintf('%s',cell2mat(data.Condici_n_1)));
+    set(handles.tabla,'Data',data2);
+    %t = uitable('ColumnName',{'id_prueba';'Fecha';'Hora';'Duración (s)'},'Data',data2);
 end
 
 %Close database connection.
 close(conn);
 
 %Clear variables
-clear curs conn
+clear conn query query2
 
 
 % --- Executes on button press in pushbutton2.
@@ -174,3 +167,14 @@ function pushbutton3_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 close(Ejemplo);
 principal
+
+
+% --- Executes on button press in pushbutton4.
+function pushbutton4_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton4 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+close(Ejemplo);
+pruebas_datos
+
+
