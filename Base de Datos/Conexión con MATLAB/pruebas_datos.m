@@ -221,10 +221,9 @@ if isequal(file,0)
    disp('User selected Cancel');
 else
    disp(['User selected ', fullfile(path,file)]);
-   fileID=fopen(strcat(path,file),'r');
-   archivo = fscanf(fileID,'%d');
+   fileID=strcat(path,file);
 end
-handles.var=archivo;
+handles.var=fileID;
 guidata(hObject,handles);
 
 
@@ -240,6 +239,11 @@ hora=handles.edit4;
 duracion=str2double(handles.edit5);
 archivo=handles.var;
 
+%[info,datos]=edfread(archivo);
+binary=fopen(archivo,'r');
+binaryData=fread(binary, 'integer*8');
+fclose(binary);
+
 conn = database('mysql', 'root', 'secret');
 query = ['SELECT * ' ...
     'FROM proyecto.pruebas WHERE pruebas.id_prueba= "' ...
@@ -250,14 +254,14 @@ data = fetch(conn,query);
 if(isempty(data)==0)
     errordlg('ID Prueba ya existente','Curso_GUIDE');
 else
-    nuevo={id_prueba,id_paciente,fecha,hora,duracion};
-    columnas={'id_prueba','id_paciente','Fecha','Hora','Duración'};
+    nuevo={id_prueba,id_paciente,fecha,hora,duracion,binaryData};
+    columnas={'id_prueba','id_paciente','Fecha','Hora','Duración','Prueba'};
     insert(conn,'pruebas',columnas,nuevo);
-    for i=1:length(archivo)
-        save={id_prueba,archivo(i)};
-        col={'id_prueba','datos'};
-        insert(conn,'pruebas_datos',col,save);
-    end
+%     for i=1:length(archivo)
+%         save={id_prueba,archivo(i)};
+%         col={'id_prueba','datos'};
+%         insert(conn,'pruebas_datos',col,save);
+%     end
     close(conn);
     msgbox('Se ha guardado correctamente','Mensaje');
     clear conn query
