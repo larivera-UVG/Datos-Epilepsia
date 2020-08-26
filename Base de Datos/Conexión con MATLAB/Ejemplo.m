@@ -22,7 +22,7 @@ function varargout = Ejemplo(varargin)
 
 % Edit the above text to modify the response to help Ejemplo
 
-% Last Modified by GUIDE v2.5 19-Aug-2020 10:07:21
+% Last Modified by GUIDE v2.5 26-Aug-2020 09:37:56
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -52,6 +52,9 @@ function Ejemplo_OpeningFcn(hObject, eventdata, handles, varargin)
 % handles    structure with handles and user data (see GUIDATA)
 % varargin   command line arguments to Ejemplo (see VARARGIN)
 
+global p
+p.MyData=[];
+
 % Choose default command line output for Ejemplo
 handles.output = hObject;
 
@@ -78,8 +81,8 @@ function pushbutton1_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton1 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+global p
 id_paciente=handles.npac;
-bandera=0;
 %------ Conexion con la base de datos------------------------
 conn = database('mysql', 'root', 'secret');
 
@@ -111,7 +114,18 @@ else
     set(handles.sexo,'String',sprintf('%s',cell2mat(data.Sexo)));
     set(handles.edad,'String',sprintf('%d',data.Edad));
     set(handles.cond,'String',sprintf('%s',cell2mat(data.Condici_n_1)));
-    set(handles.tabla,'Data',data2);
+    %     ceros=get(handles.tabla,'data');
+    %     ceros(end,1)=data2.id_prueba(1);
+    dimension=size(data2);
+    for i=1:dimension(1)
+        prueba = sprintf('%d',data2.id_prueba(i));
+        fecha = sprintf('%s',cell2mat(data2.Fecha(i)));
+        hora = sprintf('%s',cell2mat(data2.Hora(i)));
+        duracion = sprintf('%d',data2.Duraci_n_1(i));
+        p.MyData=[p.MyData; [{prueba} {fecha} {hora} {duracion}]];
+    end
+    set(handles.tabla,'Data', p.MyData)
+    %set(handles.tabla,'data',data2);
     %t = uitable('ColumnName',{'id_prueba';'Fecha';'Hora';'Duración (s)'},'Data',data2);
 end
 
@@ -127,10 +141,9 @@ function pushbutton2_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton2 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-ini = char(' ');
-set(handles.sexo,'String',ini);
-set(handles.edad,'String',ini);
-set(handles.cond,'String',ini);
+close(Ejemplo);
+Ejemplo
+
 
 
 
@@ -174,7 +187,173 @@ function pushbutton4_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton4 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-close(Ejemplo);
-pruebas_datos
+[file,path,indx] = uigetfile( ...
+{'*.m;*.mlx;*.fig;*.mat;*.slx;*.mdl',...
+    'MATLAB Files (*.m,*.mlx,*.fig,*.mat,*.slx,*.mdl)';
+   '*.m;*.mlx','Code files (*.m,*.mlx)'; ...
+   '*.fig','Figures (*.fig)'; ...
+   '*.mat','MAT-files (*.mat)'; ...
+   '*.mdl;*.slx','Models (*.slx, *.mdl)'; ...
+   '*.*',  'All Files (*.*)'}, ...
+   'Select a File');
+if isequal(file,0)
+   disp('User selected Cancel');
+else
+   disp(['User selected ', fullfile(path,file)]);
+   fileID=strcat(path,file);
+end
+handles.var=fileID;
+guidata(hObject,handles);
 
 
+% --- Executes on button press in pushbutton5.
+function pushbutton5_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton5 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+global p
+p.MyData=[];
+set(handles.tabla,'Data',p.MyData)
+id_paciente=handles.npac;
+%------ Conexion con la base de datos------------------------
+conn = database('mysql', 'root', 'secret');
+
+%Set query to execute on the database
+query = ['SELECT id_prueba, ' ...
+    '	Fecha, ' ...
+    '	Hora, ' ...
+    '	Duración, ' ...
+    '	Prueba ' ...
+    'FROM proyecto.pruebas WHERE pruebas.id_paciente= "' ...
+    id_paciente...
+    '"'];
+
+data = fetch(conn,query);
+
+dimension=size(data);
+for i=1:dimension(1)
+    prueba = sprintf('%d',data.id_prueba(i));
+    fecha = sprintf('%s',cell2mat(data.Fecha(i)));
+    hora = sprintf('%s',cell2mat(data.Hora(i)));
+    duracion = sprintf('%d',data.Duraci_n_1(i));
+    p.MyData=[p.MyData; [{prueba} {fecha} {hora} {duracion}]];
+end
+set(handles.tabla,'Data', p.MyData)
+
+%Close database connection.
+close(conn);
+
+%Clear variables
+clear conn query
+
+
+% --- Executes on button press in pushbutton6.
+function pushbutton6_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton6 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+id_paciente=handles.npac;
+fecha=handles.fecha;
+hora=handles.hora;
+duracion=str2double(handles.duracion);
+%archivo=handles.var;
+
+%[info,datos]=edfread(archivo);
+% binary=fopen(archivo,'r');
+% binaryData=fread(binary, 'integer*8');
+% fclose(binary);
+
+conn = database('mysql', 'root', 'secret');
+query = ['SELECT * ' ...
+    'FROM proyecto.pruebas'];
+data = fetch(conn,query);
+
+nuevo={id_paciente,fecha,hora,duracion};
+columnas={'id_paciente','Fecha','Hora','Duración'};
+insert(conn,'pruebas',columnas,nuevo);
+%     for i=1:length(archivo)
+%         save={id_prueba,archivo(i)};
+%         col={'id_prueba','datos'};
+%         insert(conn,'pruebas_datos',col,save);
+%     end
+close(conn);
+msgbox('Se ha guardado correctamente','Mensaje');
+clear conn query
+
+
+
+function fecha_Callback(hObject, eventdata, handles)
+% hObject    handle to fecha (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+Val = get(hObject,'String');
+handles.fecha=Val;
+guidata(hObject,handles);
+
+% Hints: get(hObject,'String') returns contents of fecha as text
+%        str2double(get(hObject,'String')) returns contents of fecha as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function fecha_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to fecha (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function hora_Callback(hObject, eventdata, handles)
+% hObject    handle to hora (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+Val = get(hObject,'String');
+handles.hora=Val;
+guidata(hObject,handles);
+
+% Hints: get(hObject,'String') returns contents of hora as text
+%        str2double(get(hObject,'String')) returns contents of hora as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function hora_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to hora (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function duracion_Callback(hObject, eventdata, handles)
+% hObject    handle to duracion (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+Val = get(hObject,'String');
+handles.duracion=Val;
+guidata(hObject,handles);
+
+% Hints: get(hObject,'String') returns contents of duracion as text
+%        str2double(get(hObject,'String')) returns contents of duracion as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function duracion_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to duracion (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
