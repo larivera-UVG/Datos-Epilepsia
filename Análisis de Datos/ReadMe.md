@@ -32,15 +32,25 @@ Para ejemplificar su funcionamiento, en los resultados de este repositorio se ut
 |   └── Graficar_Clusters
 |   └── VAT
 |   └── ZC
-├── _Resultados Finales
-│   ├── 2007-10-29-why-every-programmer-should-play-nethack.md
-│   └── 2009-04-26-barcamp-boston-4-roundup.md
-├── _sass
-│   ├── _base.scss
-│   └── _layout.scss
-├── _site
-├── .jekyll-metadata
-└── index.html # can also be an 'index.md' with valid front matter
+├── _Resultados Finales: Matrices de Confusión
+│   ├── HUMANA
+│   └── Physionet
+│   └── UBonn
+├── _Toolbox EEG Analysis
+│   ├── Imágenes
+│   ├── _códigos MATLAB
+|   └── Features
+|   └── Features_wavelet
+|   └── ZC
+|   └── EdfRead
+│   ├── _códigos MATLAB AppDesigner
+|   └── Procesamiento
+|   └── Features
+|   └── ClasificadorSVM
+|   └── ClasificadorRN
+├── _Wavelet
+├── Wavelet: código MATLAB
+└── Imágenes sub-bandas Wavelets
 ```
 
 
