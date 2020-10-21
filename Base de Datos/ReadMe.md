@@ -14,6 +14,7 @@ En este proyecto se creó e implementó una base de datos relacional de señales
 ## 1. Requisitos
 Para poder utilizar la base de datos y el *toolbox* desarrollado, es necesario contar con las siguientes herramientas.
 ####  1. Servidor Apache
+
 ####  2. PHP
 ####  3. MySQL
 ####  4. phpMyAdmin
