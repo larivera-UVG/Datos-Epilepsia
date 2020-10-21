@@ -11,7 +11,7 @@ Para ejemplificar su funcionamiento, en los resultados de este repositorio se ut
 - [Instalación del Toolbox EEG Analysis](#funciones-del-toolbox-eeg-analysis).
 - [Ejemplos de Funcionamiento del Toolbox EEG Analysis](#ejemplos-de-funcionamiento-del-toolbox-eeg-analysis).
 
-## Extructura de las Carpetas
+## Estructura de las Carpetas
 ```
 ##### Análisis de señales EEG de pacientes con epilepsia
 .
