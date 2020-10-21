@@ -78,12 +78,15 @@ El algoritmo de clasificación SVM implementado en el toolbox, permite un clasif
 El toolbox EEG Analysis es una herramienta diseñada para facilitar el análisis e implementación de algoritmos de aprendizaje automático en señales EEG con el fin de caracterizar las señales EEG de pacientes con epilepsia y detectar la presencia de crisis en las mismas. El toolbox contiene las siguientes opciones predeterminadas:
 1. @@Visualización de la señal EEG@@
 Esta opción permite visualizar la señal EEG en formato EDF. El usuario tiene opción de seleccionar la señal a cargar de su computador, como se describe en la siguiente figura en esta ventana se incluye una gráfica de amplitud vs tiempo donde se muestra el canal especificado durante el período de tiempo seleccionado. Adicionalmente, puede seleccionarse señales de prueba en línea presentes en base de datos HUMANA para visualizar las señales EEG. 
-![](https://github.com/larivera-UVG/Datos-Epilepsia/blob/master/An%C3%A1lisis%20de%20Datos/Toolbox%20EEG%20Analysis/Im%C3%A1genes/ventana1.JPG | width=100px)
+![](https://github.com/larivera-UVG/Datos-Epilepsia/blob/master/An%C3%A1lisis%20de%20Datos/Toolbox%20EEG%20Analysis/Im%C3%A1genes/ventana1.JPG)
 ##### Figura 1. Ventana de Visualización Toolbox EEG Anlaysis
 
 2. @@ Extracción de Características@@
-En esta ventana el usuario puede seleccionar opciones 
-Incluye la opción de extracción de características, donde el usuario puede escoger entre las opciones predeterminadas para enventanar y posteriormente extraer las características seleccionadas. Como resultado, la herramienta entrega un archivo de formato .mat con el vector de característica resultantes.
+En esta ventana el usuario puede seleccionar opciones para extraer características de la señal previamente cargada, debe escogerse el número de canales a analizar y especificar los mismos, el tamaño de ventana y las características que desean extraerse. Como resultado, la herramienta entrega un archivo de formato MAT con el vector de característica y un vector de clases generado automáticamente con "ceros" y "unos" balanceados según el tamaño del vector de característica resultante. El vector de clases se genera tomándo en consideración que la señal EEG cargada se encuentra ordenada de forma que la primera mitad de las muestras de la señal corresponden a un tipo de registro y la siguiente mitad de las muestras corresponden al tipo de registro restante. Es decir que la cantidad de "ceros" presentes en el vector de clase es igual a la primera mitad de las muestras de la señal y la cantidad de "unos" equivalen a la mitad restante de las muestras de las señal.
+
+En caso que la señal EEG no se encuentre ordenada de esta forma, el usuario debe generar manualmente el vector de clases y tendrá opción de cargarlo posteriormente en la ventana de clasificación del toolbox. El botón generar permite guardar el archivo de formato MAT en la ubicación que el usuario seleccione. El botón generar de la parte superior que se observa en la figura 2, calcula el resultado utilizando el análisis directo. El botón generar de la parte inferior, calcula el resultado mediante el análisis wavelet.
+![](https://github.com/larivera-UVG/Datos-Epilepsia/blob/master/An%C3%A1lisis%20de%20Datos/Toolbox%20EEG%20Analysis/Im%C3%A1genes/ventana2.JPG)
+##### Figura 2. Ventana de Extracción de Características Toolbox EEG Anlaysis
 
 3. @@ Algoritmos de Clasificación @@
 
