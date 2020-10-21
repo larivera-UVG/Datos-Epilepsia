@@ -54,21 +54,41 @@ Para ejemplificar su funcionamiento, en los resultados de este repositorio se ut
 ```
 ### Características del EEG
 El toolbox EEG Analysis toma en consideración dos tipos de análisis: análisis directo y análisis wavelet para la extracción de características. El primero tipo de análisis inlcuye las siguientes características del dominio del tiempo:
+```
 1. Cruces por zero (ZC)
 2. Valor medio absoluto (MAV)
 3. Curtosis
 4. Desviación estándar
+```
 El análisis wavelet descompone la señal EEG en subbandas que contienen los 5 ritmos cerebrales (Alfa, Beta, Gamma, Theta y Delta) y extrae de los coeficientes de aproximación de cada subbanda las siguientes características:
+```
 1. Potencia
 2. Media
 3. Curtosis
 4. Desviación Estándar
 5. Asimetría estadística
 6. Cruces por cero (ZC)
+```
 ### Clasificadores
-
+#### Máquina de vectores de soporte SVM
+El algoritmo de clasificación SVM implementado en el toolbox, permite un clasificador binario para detectar registros de la señal EEG "normales" e "ictales", es decir, segmentos de la señal con crisis y sin crisis epilépticas. Utiliza el toolbox 
+#### Redes Neuronales Artificiales ANN
 
 ### Descripción del Toolbox EEG Analysis
+El toolbox EEG Analysis es una herramienta diseñada para facilitar el análisis e implementación de algoritmos de aprendizaje automático en señales EEG con el fin de caracterizar las señales EEG de pacientes con epilepsia y detectar la presencia de crisis en las mismas. El toolbox contiene las siguientes opciones predeterminadas:
+1. @@Visualización de la señal EEG@@
+Esta opción permite visualizar la señal EEG en formato EDF. El usuario tiene opción de seleccionar la señal a cargar de su computador, como se describe en la siguiente figura en esta ventana se incluye una gráfica de amplitud vs tiempo donde se muestra el canal especificado durante el período de tiempo seleccionado. Adicionalmente, puede seleccionarse señales de prueba en línea presentes en base de datos HUMANA para visualizar las señales EEG. 
+![alt text](https://github.com/larivera-UVG/Datos-Epilepsia/blob/master/An%C3%A1lisis%20de%20Datos/Toolbox%20EEG%20Analysis/Im%C3%A1genes/ventana1.JPG "Logo Title Text 1")
+##### Figura 1. Ventana de Visualización Toolbox EEG Anlaysis
+
+2. @@ Extracción de Características@@
+En esta ventana el usuario puede seleccionar opciones 
+Incluye la opción de extracción de características, donde el usuario puede escoger entre las opciones predeterminadas para enventanar y posteriormente extraer las características seleccionadas. Como resultado, la herramienta entrega un archivo de formato .mat con el vector de característica resultantes.
+
+3. @@ Algoritmos de Clasificación @@
+
+
+
 ### Instalación del Toolbox EEG Analysis
 ### Ejemplos de Funcionamiento del Toolbox EEG Analysis
 
