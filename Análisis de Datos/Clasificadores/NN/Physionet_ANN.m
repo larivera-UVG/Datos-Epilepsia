@@ -2,7 +2,6 @@
 load 'C:\Users\USUARIO\Downloads\Physionet EEG scalp database\Physionet_data_etiquetada.mat'
 
 Fs = 256;
-inicio=3339*Fs; fin=3401*Fs;
 muestras=2500;  %cada 10s
 canales = 2;
 op=1;
@@ -97,11 +96,6 @@ for m=1:length(comb)
     end
 end
  
- %Graficar matriz de confusion
- figure(5);
- cm1 = plotconfusion(testlabel(:,index1)',predict_label_L(:,index1)',{'Matriz de confusion Kernel Lineal'},testlabel(:,index2)',predict_label_R(:,index2)',{'Matriz de confusion Kernel RBF'});
-
-
  %Redes Neuronales
  trainFcn = 'trainscg';  % Scaled conjugate gradient backpropagation.
  % Ajustar parametros deseados
