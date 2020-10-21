@@ -1,29 +1,29 @@
 %Pruebas para encontrar matriz de caracteristicas y vector de clases
-%Se comparan 6 señales de set A con set E y set B con set E (Total 12) 
-%En cada grabación: Fs = 173.61 Hz, 4097 muestras - 24s de grabación
+%Se comparan 6 seÃ±ales de set A con set E y set B con set E (Total 12) 
+%En cada grabaciÃ³n: Fs = 173.61 Hz, 4097 muestras - 24s de grabaciÃ³n
 
-%Para comparación de set A con set E se utilizan las siguientes señales:
-% Set E pacientes epilépticos fase ictal: S100 S080 S060 S040 S020 S001
+%Para comparaciÃ³n de set A con set E se utilizan las siguientes seÃ±ales:
+% Set E pacientes epilÃ©pticos fase ictal: S100 S080 S060 S040 S020 S001
 % Set A pacientes normales ojos abiertos: Z100 Z020 Z030 Z040 Z050 Z060
-%Para comparación de set B con set E se utilizan las siguientes señales:
-%Set E pacientes epilépticos fase ictal: S015 S025 S035 S045 S055 S065
+%Para comparaciÃ³n de set B con set E se utilizan las siguientes seÃ±ales:
+%Set E pacientes epilÃ©pticos fase ictal: S015 S025 S035 S045 S055 S065
 % Set B pacientes normales ojos cerrados: O100 O090 O080 O070 O060 O050
 %------------------------------------------------------------------------
-% Si se desea analizar otras señales de los sets descomentar siguiente
-% lineas y editar cuales señales se desean y colocar opcion=13
+% Si se desea analizar otras seÃ±ales de los sets descomentar siguiente
+% lineas y editar cuales seÃ±ales se desean y colocar opcion=13
 % canalconcrisis = load('<ruta>\<nombrearchivo>.txt');
 % canalsincrisis = load('<ruta>\<nombrearchivo>.txt');
 %------------------------------------------------------------------------
 
-%Cambiar variable opción: 1-6 para comparar set A - set E
-%Cambiar variable opción: 7-12 para comparar set B - set E
+%Cambiar variable opciÃ³n: 1-6 para comparar set A - set E
+%Cambiar variable opciÃ³n: 7-12 para comparar set B - set E
 opcion = 2;
 
-%Definir tamaño de ventana
-%Para los experimentos se utilizó muestras = 150 y 80
+%Definir tamaÃ±o de ventana
+%Para los experimentos se utilizÃ³ muestras = 150 y 80
 muestras =150; 
 
-load SEÑALES.mat
+load SEÃ‘ALES.mat
 
 if opcion==1
    Seizure_active = S100;
@@ -103,7 +103,7 @@ channel1 = filtfilt(fruido,channel1);
 channel2 = filtfilt(lowpass,channel2);
 channel1 = filtfilt(lowpass,channel1);
 
-%Normalizar señales
+%Normalizar seÃ±ales
 channel1 = channel1/max(Normal_pacients);
 channel2 = channel2/max(Seizure_active);
 
@@ -137,14 +137,14 @@ while(1)
         end  
 end
 
-% Concatenar vector de características
+% Concatenar vector de caracterÃ­sticas
 features = [varianza1,curtosis1,mav1;varianza2,curtosis2,mav2];
 %Guardar vector de caracteristicas
 csvwrite(['Matriz_Features',num2str(name),'.csv'],features);
 
  %Graficar
   t = 0:length(varianza1)-1;
-  title('Características Encontradas')
+  title('CaracterÃ­sticas Encontradas')
   subplot(3,2,1);
   plot(t,varianza1','color','r');
   ylabel('Varianza set E')
