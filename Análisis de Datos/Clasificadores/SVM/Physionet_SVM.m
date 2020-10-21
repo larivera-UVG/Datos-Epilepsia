@@ -1,14 +1,14 @@
-%cargar datos etiquetados de 5 pacientes de Physionet
+%Cargar datos etiquetados de 5 pacientes de Physionet. Este workspace incluye data preseleccionada de 5 pacientes distintos.
+%Los datos se encuentran balanceados, la mitad de las muestras corresponden a registros normales y la mitad restante a registros ictales.
 load 'C:\Users\USUARIO\Downloads\Physionet EEG scalp database\Physionet_data_etiquetada.mat'
 
 Fs = 256;
-inicio=3339*Fs; fin=3401*Fs;
 muestras=2500;  %cada 10s
 canales = 2;
 op=1;
 comb = combnk(1:23,canales); %para eeg de 23 canales
 i=1;
-%Dejar un paciente afuera de train, para realizar testeo
+%Dejar un paciente afuera de train, para realizar testeo. 
 x =randi([1 5]);
 if x==1
     datostrain = [chb01(:,1:length(chb01/2)),chb03(:,1:length(chb03/2)),chb08(:,1:length(chb08/2)),...
@@ -20,7 +20,6 @@ elseif x==2
         chb15(:,1:length(chb15/2)),chb01(:,length(chb01/2)+1:length(chb01)),chb03(:,length(chb03/2)+1:length(chb03))...
         ,chb08(:,length(chb08/2)+1:length(chb08)),chb15(:,length(chb15/2)+1:length(chb15))];
     datostest = chb13;
-
 elseif x==3
     datostrain = [chb01(:,1:length(chb01/2)),chb03(:,1:length(chb03/2)),chb13(:,1:length(chb13/2)),...
         chb15(:,1:length(chb15/2)),chb01(:,length(chb01/2)+1:length(chb01)),chb03(:,length(chb03/2)+1:length(chb03))...
@@ -37,6 +36,7 @@ else
         ,chb13(:,length(chb13/2)+1:length(chb13)),chb15(:,length(chb15/2)+1:length(chb15))];
     datostest = chb01;
 end
+%Si desea modificarse, cargar datos para entrenamiento en variable datostrain y datos de prueba en variable datostest.
 r=1;
 while (r<=length(comb))  
  if canales==2   
@@ -102,31 +102,4 @@ end
  cm1 = plotconfusion(testlabel(:,index1)',predict_label_L(:,index1)',{'Matriz de confusion Kernel Lineal'},testlabel(:,index2)',predict_label_R(:,index2)',{'Matriz de confusion Kernel RBF'});
 
 
- %Redes Neuronales
- trainFcn = 'trainscg';  % Scaled conjugate gradient backpropagation.
- % Ajustar parametros deseados
- hiddenLayerSize = 10;
- %se concatenan los vectores de feature(test y train)
-%y los vectores de etiqueta(train y test)
-features = [train_data;test_data];
-labels = [train_label;test_label];
-
-%Creacion de red neuronal
-net = patternnet(hiddenLayerSize, trainFcn);
-
-% Entrenar la red 
-[net,tr] = train(net,features',labels');
-% Setup Division of Data for Training, Validation, Testing
-net.divideParam.trainRatio = 70/100;
-net.divideParam.valRatio = 15/100;
-net.divideParam.testRatio = 15/100;
-
-% Testear la red
-y = net(features'); 
-
-e = gsubtract(labels',y);
-performance = perform(net,labels',y);
-tind = vec2ind(labels');  
-yind = vec2ind(y);                      
-percentErrors = sum(tind ~= yind)/numel(tind);
  
