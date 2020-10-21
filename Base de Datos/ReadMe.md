@@ -5,15 +5,16 @@ En este proyecto se creó e implementó una base de datos relacional de señales
 ## Tabla de Contenido
 1. [Requisitos](##Requisitos)
     1. [Servidor Apache](###Servidor-Apache)
-    2. [Complemento PHP](###Complemento-PHP)
+    2. [PHP](###PHP)
     3. [MySQL](###MySQL)
     4. [phpMyAdmin](###phpMyAdmin)
 2. [Instalación](##Instalación)
 3. [Uso](##Uso)
 
 ## 1. Requisitos
+Para poder utilizar la base de datos y el *toolbox* desarrollado, es necesario contar con las siguientes herramientas.
 ####  1. Servidor Apache
-####  2. Complemento PHP
+####  2. PHP
 ####  3. MySQL
 ####  4. phpMyAdmin
 
