@@ -12,7 +12,7 @@ Para ejemplificar su funcionamiento, en este repositorio se utilizan señales EE
 - [Contenido de Carpeta: Análisis de Datos](#contenido-de-carpeta-analisis-de-datos).
 - [Resultados de Clasificadores](#resultados-de-clasificadores).
 - [Descripción del Toolbox EEG Analysis](#descripcion-del-toolbox-eeg-analysis).
-- [Funciones del Toolbox EEG Analysis](#funciones-del-toolbox-eeg-analysis).
+- [Instalación del Toolbox EEG Analysis](#funciones-del-toolbox-eeg-analysis).
 - [Ejemplos de Funcionamiento del Toolbox EEG Analysis](#ejemplos-de-funcionamiento-del-toolbox-eeg-analysis).
 - [Bibliografía](#bibliografia).
 
@@ -21,7 +21,7 @@ Para ejemplificar su funcionamiento, en este repositorio se utilizan señales EE
 Una característica es un parámetro que describe un comportamiento y facilita el análisis de una señal. En un electroencefalograma (EEG), pueden ordenarse las características en 5 grupos:  características en el dominio del tiempo, características en el dominio de la frecuencia, coeficientes auto-Regresivos, características wavelet y características cepstrales \cite{aarabi2006automated}.
 
 #### Características en el Dominio del Tiempo
-Estas características son extraídas directamente de las señales, comúnmente utilizando los  momentos centrales de la señal. En estadística, el momento central o centrado de orden $k$ de una variable aleatoria $X$ se define como:
+Estas características son extraídas directamente de las señales, comúnmente utilizando los  momentos centrales de la señal. En estadística, el momento central o centrado de orden k de una variable aleatoria X se define como:
 
 ### Aprendizaje Automático
 ### Algoritmo de Clasificación: SVM
