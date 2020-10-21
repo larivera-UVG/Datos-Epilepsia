@@ -71,9 +71,15 @@ El análisis wavelet descompone la señal EEG en subbandas que contienen los 5 r
 ```
 ### Clasificadores
 #### Máquina de vectores de soporte SVM
-El algoritmo de clasificación SVM implementado en el toolbox, permite un clasificador binario para detectar registros de la señal EEG "normales" e "ictales", es decir, segmentos de la señal con crisis y sin crisis epilépticas. Utiliza el toolbox 
-#### Redes Neuronales Artificiales ANN
+El algoritmo de clasificación SVM implementado en el toolbox, permite un clasificador binario para detectar registros de la señal EEG "normales" e "ictales", es decir, segmentos de la señal con crisis y sin crisis epilépticas. Utiliza las funciones fitcsvm y predict del toolbox de stadistics and machine learning de MATLAB.
 
+Estas funciones, validan cruzadamente un modelo de máquina vectorial de soporte (SVM) para la clasificación de dos clases (binarias) en un conjunto de datos predictor de baja dimensión o de dimensión moderada. admite la asignación de datos predictores mediante funciones del kernel y admite la optimización mínima secuencial (SMO), el algoritmo iterativo de datos únicos (ISDA) o 1 minimización de margen flexible a través de la programación cuadrática para la minimización de la función objetivo.
+Encontrar documentación en el siguiente [link](https://la.mathworks.com/support/search.html?q=fitcs&page=1).
+
+#### Redes Neuronales Artificiales ANN
+El algoritmo de clasificación ANN implementado en el toolbox, permite un clasificador binario para detectar registros de la señal EEG "normales" e "ictales" de la señal EEG. Utiliza el toolbox deep learning de MATLAB. La función patternnet regresa una estructura que define la red neuronal según el número de capas ocultas y función de entrenamiento especificada. Se utiliza la función train para entrenamiento de la red y la función net para probar el algoritmo de clasificación.
+
+Puede encontrarse documentación acerca del toolbox deep learning en el siguiente [link](https://la.mathworks.com/help/deeplearning/ref/fitnet.html).
 ### Descripción del Toolbox EEG Analysis
 El toolbox EEG Analysis es una herramienta diseñada para facilitar el análisis e implementación de algoritmos de aprendizaje automático en señales EEG con el fin de caracterizar las señales EEG de pacientes con epilepsia y detectar la presencia de crisis en las mismas. El toolbox contiene las siguientes opciones predeterminadas:
 1. @@Visualización de la señal EEG@@
@@ -95,9 +101,9 @@ La herramienta utiliza los resultados generados en la ventana extracción de car
 ```
 1. data: Vector de características de dimensión nxm, donde n representa el número de ventanas seleccionadas para entrenamiento del clasificador y m la multiplicación del número de características por el número de canales analizados.
 2. labels: Vector de dimensión nx1, que contiene "ceros" en las ventanas que representan la clase 1, y "unos" en las ventanas que representan la clase 2. El número de filas debe corresponder al número de ventanas que contiene el vector de características "data".
-
-@@Para el clasificador SVM, el toolbox utiliza validación cruzada. El usuario debe seleccionar el número de particiones previo a cargar los datos para dividir el vector de características en muestras para entrenamiento y prueba del clasificador.@@
 ```
+@@Para el clasificador SVM, el toolbox utiliza validación cruzada. El usuario debe seleccionar el número de particiones previo a cargar los datos para dividir el vector de características en muestras para entrenamiento y prueba del clasificador.@@
+
 #### Redes Neuronales, ANN
 La ventana de red neuronal permite seleccionar los porcentajes de entrenamiento, validación y testeo. Adicionalemnte puede elegir el algoritmo de entrenamiento de la red neuronal y escoger el número de capas ocultas. Si se desea implementar el clasificador con los resultados generados en la ventana de extracción de características, es importante especificar el tipo de análisis utilizado (directo o wavelet) para que la herramienta utilice el vector de características correcto al implementar el algoritmo de clasificación.
 
