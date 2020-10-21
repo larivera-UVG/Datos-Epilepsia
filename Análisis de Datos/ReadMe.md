@@ -4,8 +4,8 @@ Se calcula que hay 50 millones de afectados por la epilepsia en todo el mundo. S
 Para ejemplificar su funcionamiento, en los resultados de este repositorio se utilizan señales EEG de tres diferentes bases de datos, “UBonn EEG Dataset”, “CHB-MIT” y datos obtenidos del Centro de Epilepsia y Neurocirugía Funcional (HUMANA). En todos los casos, se utilizan características del dominio del tiempo: varianza, valor medio absoluto, curtosis, cruces por cero, desviación estándar y adicionalmente se realiza un análisis de características del tiempo-escala mediante la descomposición Wavelet: potencia, curtosis, cruzes por cero, desviación estándar, valor medio absoluto y asimetría estadística.
 
 ## Tabla de contenido
+- [Características del EEG](#caracteristicas-del-eeg).
 - [Clasificadores](#clasificadores).
-- [Clustering](#clustering).
 - [Descripción del Toolbox EEG Analysis](#descripcion-del-toolbox-eeg-analysis).
 - [Instalación del Toolbox EEG Analysis](#funciones-del-toolbox-eeg-analysis).
 - [Ejemplos de Funcionamiento del Toolbox EEG Analysis](#ejemplos-de-funcionamiento-del-toolbox-eeg-analysis).
@@ -52,11 +52,20 @@ Para ejemplificar su funcionamiento, en los resultados de este repositorio se ut
 |   ├── Wavelet: código MATLAB
 |   └── Imágenes sub-bandas Wavelets
 ```
-
+### Características del EEG
+El toolbox EEG Analysis toma en consideración dos tipos de análisis: análisis directo y análisis wavelet para la extracción de características. El primero tipo de análisis inlcuye las siguientes características del dominio del tiempo:
+1. Cruces por zero (ZC)
+2. Valor medio absoluto (MAV)
+3. Curtosis
+4. Desviación estándar
+El análisis wavelet descompone la señal EEG en subbandas que contienen los 5 ritmos cerebrales (Alfa, Beta, Gamma, Theta y Delta) y extrae de los coeficientes de aproximación de cada subbanda las siguientes características:
+1. Potencia
+2. Media
+3. Curtosis
+4. Desviación Estándar
+5. Asimetría estadística
+6. Cruces por cero (ZC)
 ### Clasificadores
-
-
-### Clustering
 
 
 ### Descripción del Toolbox EEG Analysis
