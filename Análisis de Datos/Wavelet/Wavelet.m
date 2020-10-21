@@ -1,4 +1,4 @@
-%Encontrar vectores de características por descomposición de bandas en cada
+%Encontrar vectores de caracterÃ­sticas por descomposiciÃ³n de bandas en cada
 %canal
 prueba =2;
 ftures = [1,1,1,1,1,1]; %[power,media,desviacion,curtosis,asimetria,zc]
@@ -155,7 +155,7 @@ end
 % %canal 1
 % subplot(7,1,1)
 % plot(cA7)
-% title('Coeficientes para Aproximación')
+% title('Coeficientes para AproximaciÃ³n')
 % subplot(7,1,2)
 % plot(c7)
 % title('Nivel7 Delta')
@@ -182,7 +182,7 @@ end
 % D7 = wrcoef('d',C,L,waveletFunction,7); %THETA
 % A7 = wrcoef('a',C,L,waveletFunction,7); %DELTA
 % figure(3);
-% title('Reconstrucción de Coeficientes')
+% title('ReconstrucciÃ³n de Coeficientes')
 % %canal 1
 % %subplot(7,1,1)
 % %plot(A7(:,1))
