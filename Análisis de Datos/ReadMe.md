@@ -6,12 +6,19 @@ Para ejemplificar su funcionamiento, en los resultados de este repositorio se ut
 ## Tabla de contenido
 - [Clasificadores](#clasificadores).
 - [Clustering](#clustering).
-- [Funciones](#funciones).
 - [Descripción del Toolbox EEG Analysis](#descripcion-del-toolbox-eeg-analysis).
 - [Instalación del Toolbox EEG Analysis](#funciones-del-toolbox-eeg-analysis).
 - [Ejemplos de Funcionamiento del Toolbox EEG Analysis](#ejemplos-de-funcionamiento-del-toolbox-eeg-analysis).
 
-
+## Extructura de las Carpetas
+##### Análisis de señales EEG de pacientes con epilepsia
+|
+|__Clasificadores
+|   |
+|   |_ SVM : MATLAB scripts base de datos UBonn y Phisyionet
+|   |_ ANN : MATLAB scripts base de datos UBonn y Phisyionet
+|___CLustering
+|   |
 ### Clasificadores
 
 
@@ -19,7 +26,6 @@ Para ejemplificar su funcionamiento, en los resultados de este repositorio se ut
 ### Clustering
 
 
-### Funciones
 ### Descripción del Toolbox EEG Analysis
 ### Instalación del Toolbox EEG Analysis
 ### Ejemplos de Funcionamiento del Toolbox EEG Analysis
