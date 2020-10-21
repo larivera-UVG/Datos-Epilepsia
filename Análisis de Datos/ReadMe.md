@@ -7,9 +7,9 @@ Para ejemplificar su funcionamiento, en este repositorio se utilizan señales EE
 
 - [Características del EEG](#caracteristicas-del-eeg).
 - [Aprendizaje Automático](#aprendizaje-automatico).
-- [Algoritmo de Clasificación: SVM](#algoritmo-de-clasificacion:-svm).
-- [Algoritmo de Clasificación: ANN](#algoritmo-de-clasificacion:-ann).
-- [Contenido de Carpeta: Análisis de Datos](#contenido-de-carpeta:-analisis-de-datos).
+- [Algoritmo de Clasificación: SVM](#algoritmo-de-clasificacion-svm).
+- [Algoritmo de Clasificación: ANN](#algoritmo-de-clasificacion-ann).
+- [Contenido de Carpeta: Análisis de Datos](#contenido-de-carpeta-analisis-de-datos).
 - [Resultados de Clasificadores](#resultados-de-clasificadores).
 - [Descripción del Toolbox EEG Analysis](#descripcion-del-toolbox-eeg-analysis).
 - [Funciones del Toolbox EEG Analysis](#funciones-del-toolbox-eeg-analysis).
