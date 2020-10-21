@@ -38,12 +38,12 @@ Para ejemplificar su funcionamiento, en los resultados de este repositorio se ut
 │   └── UBonn
 ├── _Toolbox EEG Analysis
 │   ├── Imágenes
-│   ├── _códigos MATLAB
+│   └── _Códigos MATLAB
 |       └── Features
 |       └── Features_wavelet
 |       └── ZC
 |       └── EdfRead
-│   ├── _códigos MATLAB AppDesigner
+│   └── _Códigos MATLAB AppDesigner
 |       └── Procesamiento
 |       └── Features
 |       └── ClasificadorSVM
@@ -53,7 +53,7 @@ Para ejemplificar su funcionamiento, en los resultados de este repositorio se ut
 |   └── Imágenes sub-bandas Wavelets
 ```
 
-
+### Clasificadores
 
 
 ### Clustering
