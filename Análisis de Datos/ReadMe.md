@@ -17,6 +17,12 @@ Para ejemplificar su funcionamiento, en este repositorio se utilizan señales EE
 - [Bibliografía](#bibliografia).
 
 ### Características del EEG
+
+Una característica es un parámetro que describe un comportamiento y facilita el análisis de una señal. En un electroencefalograma (EEG), pueden ordenarse las características en 5 grupos:  características en el dominio del tiempo, características en el dominio de la frecuencia, coeficientes auto-Regresivos, características wavelet y características cepstrales \cite{aarabi2006automated}.
+
+#### Características en el Dominio del Tiempo
+Estas características son extraídas directamente de las señales, comúnmente utilizando los  momentos centrales de la señal. En estadística, el momento central o centrado de orden $k$ de una variable aleatoria $X$ se define como:
+
 ### Aprendizaje Automático
 ### Algoritmo de Clasificación: SVM
 ### Algoritmo de Clasificación: ANN
