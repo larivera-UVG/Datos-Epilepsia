@@ -4,18 +4,18 @@ En este proyecto se creó e implementó una base de datos relacional de señales
 
 ## Tabla de Contenido
 1. [Requisitos](##Requisitos)
-    1. Servidor Apache(###Servidor-Apache)
-    2. Complemento PHP(###Complemento-PHP)
-    3. MySQL(###MySQL)
-    4. phpMyAdmin(###phpMyAdmin)
+    1. [Servidor Apache](###Servidor-Apache)
+    2. [Complemento PHP](###Complemento-PHP)
+    3. [MySQL](###MySQL)
+    4. [phpMyAdmin](###phpMyAdmin)
 2. [Instalación](##Instalación)
 3. [Uso](##Uso)
 
 ## 1. Requisitos
-  ### 1. Servidor Apache
-  ### 2. Complemento PHP
-  ### 3. MySQL
-  ### 4. phpMyAdmin
+####  1. Servidor Apache
+####  2. Complemento PHP
+####  3. MySQL
+####  4. phpMyAdmin
 
 ## 2. Instalación
 
