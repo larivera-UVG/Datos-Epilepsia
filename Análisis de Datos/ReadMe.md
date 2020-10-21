@@ -79,7 +79,7 @@ El toolbox EEG Analysis es una herramienta diseñada para facilitar el análisis
 1. @@Visualización de la señal EEG@@
 Esta opción permite visualizar la señal EEG en formato EDF. El usuario tiene opción de seleccionar la señal a cargar de su computador, como se describe en la siguiente figura en esta ventana se incluye una gráfica de amplitud vs tiempo donde se muestra el canal especificado durante el período de tiempo seleccionado. Adicionalmente, puede seleccionarse señales de prueba en línea presentes en base de datos HUMANA para visualizar las señales EEG. 
 
-![]:https://github.com/larivera-UVG/Datos-Epilepsia/blob/master/An%C3%A1lisis%20de%20Datos/Toolbox%20EEG%20Analysis/Im%C3%A1genes/ventana1.JPG 
+![](https://github.com/larivera-UVG/Datos-Epilepsia/blob/master/An%C3%A1lisis%20de%20Datos/Toolbox%20EEG%20Analysis/Im%C3%A1genes/ventana1.JPG) 
 ##### Figura 1. Ventana de Visualización Toolbox EEG Anlaysis
 
 2. @@ Extracción de Características@@
@@ -87,7 +87,7 @@ En esta ventana el usuario puede seleccionar opciones para extraer característi
 
 En caso que la señal EEG no se encuentre ordenada de esta forma, el usuario debe generar manualmente el vector de clases y tendrá opción de cargarlo posteriormente en la ventana de clasificación del toolbox. El botón generar permite guardar el archivo de formato MAT en la ubicación que el usuario seleccione. El botón generar de la parte superior que se observa en la figura 2, calcula el resultado utilizando el análisis directo. El botón generar de la parte inferior, calcula el resultado mediante el análisis wavelet. Al generar resultados se habilitan las opciones de clasificadores, red neuronal y máquina de vectores de soporte.
 
-![]:https://github.com/larivera-UVG/Datos-Epilepsia/blob/master/An%C3%A1lisis%20de%20Datos/Toolbox%20EEG%20Analysis/Im%C3%A1genes/ventana2.JPG 
+![](https://github.com/larivera-UVG/Datos-Epilepsia/blob/master/An%C3%A1lisis%20de%20Datos/Toolbox%20EEG%20Analysis/Im%C3%A1genes/ventana2.JPG) 
 ##### Figura 2. Ventana de Extracción de Características Toolbox EEG Anlaysis
 
 3. @@ Algoritmos de Clasificación @@
@@ -98,19 +98,21 @@ La herramienta utiliza los resultados generados en la ventana extracción de car
 
 @@Para el clasificador SVM, el toolbox utiliza validación cruzada. El usuario debe seleccionar el número de particiones previo a cargar los datos para dividir el vector de características en muestras para entrenamiento y prueba del clasificador.@@
 ```
-#### Redes Neuronales
-La ventana de red neuronal permite seleccionar los porcentajes de entrenamiento, validación y testeo. Adicionalemnte puede elegir el algoritmo de entrenamiento de la red neuronal y escoger el número de capas ocultas. Si se desea implementar el clasificador con los resultados generados en la ventana de extracción de características, es importante especificar el tipo de análisis utilizado (directo o wavelet) para que la herramienta utilice el vector de características correcto al implementar el algoritmo de clasificadión.
+#### Redes Neuronales, ANN
+La ventana de red neuronal permite seleccionar los porcentajes de entrenamiento, validación y testeo. Adicionalemnte puede elegir el algoritmo de entrenamiento de la red neuronal y escoger el número de capas ocultas. Si se desea implementar el clasificador con los resultados generados en la ventana de extracción de características, es importante especificar el tipo de análisis utilizado (directo o wavelet) para que la herramienta utilice el vector de características correcto al implementar el algoritmo de clasificación.
 
 El botón visualizar, ver figura 3, entrega los resultados del toolbox deep learning de MATLAB, donde el usuario puede visualizar la estructura de la red, las matrices de confusión e indicadores típicos para evaluar desempeño del algoritmo. Adicionalmente se presenta un resumen en la parte inferior de los resultados obtenidos.
-![]:https://github.com/larivera-UVG/Datos-Epilepsia/blob/master/An%C3%A1lisis%20de%20Datos/Toolbox%20EEG%20Analysis/Im%C3%A1genes/ventana2.JPG 
+![](https://github.com/larivera-UVG/Datos-Epilepsia/blob/master/An%C3%A1lisis%20de%20Datos/Toolbox%20EEG%20Analysis/Im%C3%A1genes/ventana3.JPG) 
 ##### Figura 3. Ventana de Algoritmo de Clasificación: Redes Neuronales
 
-#### Máquina de vectores de soporte
-La ventana de red neuronal permite seleccionar los porcentajes de entrenamiento, validación y testeo. Adicionalemnte puede elegir el algoritmo de entrenamiento de la red neuronal y escoger el número de capas ocultas. Si se desea implementar el clasificador con los resultados generados en la ventana de extracción de características, es importante especificar el tipo de análisis utilizado (directo o wavelet) para que la herramienta utilice el vector de características correcto al implementar el algoritmo de clasificadión.
+#### Máquina de vectores de soporte, SVM
+La ventana de SVM utiliza la técnica de validación cruzada mediante la función de MATLAB @@crossvalind@@ para dividir el vector de características en entrenamiento y prueba. El usuario puede seleccionar el número de particiones y el tipo de Kernel para implementar el algoritmo. Si se desea implementar el clasificador con los resultados generados en la ventana de extracción de características, es importante especificar el tipo de análisis utilizado (directo o wavelet) para que la herramienta utilice el vector de características correcto al implementar el algoritmo de clasificación.
 
-El botón visualizar, ver figura 3, entrega los resultados del toolbox deep learning de MATLAB, donde el usuario puede visualizar la estructura de la red, las matrices de confusión e indicadores típicos para evaluar desempeño del algoritmo. Adicionalmente se presenta un resumen en la parte inferior de los resultados obtenidos.
-![]:https://github.com/larivera-UVG/Datos-Epilepsia/blob/master/An%C3%A1lisis%20de%20Datos/Toolbox%20EEG%20Analysis/Im%C3%A1genes/ventana2.JPG 
+El botón visualizar, ver figura 4, entrega los resultados del toolbox machine learning de MATLAB, donde el usuario puede visualizar la matriz de confusión. Adicionalmente se presenta en la parte inferior un resumen de la exactitud y resultados del algoritmo.
+
+![](https://github.com/larivera-UVG/Datos-Epilepsia/blob/master/An%C3%A1lisis%20de%20Datos/Toolbox%20EEG%20Analysis/Im%C3%A1genes/ventana5.JPG )
 ##### Figura 4. Ventana de Algoritmo de Clasificación: Máquina de Vectores de Soporte
+
 ### Instalación del Toolbox EEG Analysis
 ### Ejemplos de Funcionamiento del Toolbox EEG Analysis
 
