@@ -11,8 +11,8 @@ Para ejemplificar su funcionamiento, en los resultados de este repositorio se ut
 - [Ejemplos de Funcionamiento del Toolbox EEG Analysis](#ejemplos-de-funcionamiento-del-toolbox-eeg-analysis).
 
 ## Extructura de las Carpetas
-##### Análisis de señales EEG de pacientes con epilepsia
 ```
+##### Análisis de señales EEG de pacientes con epilepsia
 .
 ├── _Clasificadores
 │   ├── SVM: Código MATLAB 
@@ -39,18 +39,18 @@ Para ejemplificar su funcionamiento, en los resultados de este repositorio se ut
 ├── _Toolbox EEG Analysis
 │   ├── Imágenes
 │   ├── _códigos MATLAB
-|   └── Features
-|   └── Features_wavelet
-|   └── ZC
-|   └── EdfRead
+|       └── Features
+|       └── Features_wavelet
+|       └── ZC
+|       └── EdfRead
 │   ├── _códigos MATLAB AppDesigner
-|   └── Procesamiento
-|   └── Features
-|   └── ClasificadorSVM
-|   └── ClasificadorRN
+|       └── Procesamiento
+|       └── Features
+|       └── ClasificadorSVM
+|       └── ClasificadorRN
 ├── _Wavelet
-├── Wavelet: código MATLAB
-└── Imágenes sub-bandas Wavelets
+|   ├── Wavelet: código MATLAB
+|   └── Imágenes sub-bandas Wavelets
 ```
 
 
