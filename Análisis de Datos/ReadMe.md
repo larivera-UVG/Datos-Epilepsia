@@ -12,14 +12,37 @@ Para ejemplificar su funcionamiento, en los resultados de este repositorio se ut
 
 ## Extructura de las Carpetas
 ##### Análisis de señales EEG de pacientes con epilepsia
-|
-|__Clasificadores
-|   |
-|   |_ SVM : MATLAB scripts base de datos UBonn y Phisyionet
-|   |_ ANN : MATLAB scripts base de datos UBonn y Phisyionet
-|__CLustering
-|   |
-### Clasificadores
+```
+.
+├── _Clasificadores
+│   ├── SVM: Código MATLAB 
+│   └── ANN: Código MATLAB 
+├── _Clustering
+│   ├── K-medias y FCM HUMANA Base de Datos
+├── _Documentos
+│   ├── Protocolo de Tesis
+│   └── Tesis
+├── _Funciones: Códigos MATLAB
+│   ├── Features_edf
+│   └── Features_wavelet
+|   └── Edfread
+|   └── FCM
+|   └── K_means
+|   └── LabelsGen
+|   └── Graficar_Clusters
+|   └── VAT
+|   └── ZC
+├── _Resultados Finales
+│   ├── 2007-10-29-why-every-programmer-should-play-nethack.md
+│   └── 2009-04-26-barcamp-boston-4-roundup.md
+├── _sass
+│   ├── _base.scss
+│   └── _layout.scss
+├── _site
+├── .jekyll-metadata
+└── index.html # can also be an 'index.md' with valid front matter
+```
+
 
 
 
