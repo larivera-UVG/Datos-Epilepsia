@@ -119,6 +119,8 @@ El botón visualizar, ver figura 4, entrega los resultados del toolbox machine l
 ![](https://github.com/larivera-UVG/Datos-Epilepsia/blob/master/An%C3%A1lisis%20de%20Datos/Toolbox%20EEG%20Analysis/Im%C3%A1genes/ventana5.JPG )
 ##### Figura 4. Ventana de Algoritmo de Clasificación: Máquina de Vectores de Soporte
 
+4. @@ Conexión con Base de Datos HUMANA@@
+El toolbox EEG Analysis se incluye en la interfaz de la base de datos HUMANA, creada por María Fernanda Pineda 
 ### Instalación del Toolbox EEG Analysis
 ### Ejemplos de Funcionamiento del Toolbox EEG Analysis
 
