@@ -10,7 +10,7 @@ Para ejemplificar su funcionamiento, en este repositorio se utilizan señales EE
 - [Algoritmo de Clasificación: SVM](#algoritmo-de-clasificacion:-svm).
 - [Algoritmo de Clasificación: ANN](#algoritmo-de-clasificacion:-ann).
 - [Contenido de Carpeta: Análisis de Datos](#contenido-de-carpeta:-analisis-de-datos).
-- [Resultados de Clasificadores](#insertar-un-bloque-de-codigo).
+- [Resultados de Clasificadores](#resultados-de-clasificadores).
 - [Descripción del Toolbox EEG Analysis](#descripcion-del-toolbox-eeg-analysis).
 - [Funciones del Toolbox EEG Analysis](#funciones-del-toolbox-eeg-analysis).
 - [Ejemplos de Funcionamiento del Toolbox EEG Analysis](#ejemplos-de-funcionamiento-del-toolbox-eeg-analysis).
