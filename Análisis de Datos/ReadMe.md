@@ -5,17 +5,24 @@ Para ejemplificar su funcionamiento, en este repositorio se utilizan señales EE
 
 ## Tabla de contenido
 
-- [Características del EEG](#caracteristicas-de-EEG).
-- [Cursivas](#cursivas).
-- [Negrilla](#negrilla).
-- [Viñetas para tablas de contenido](#vinetas).
-- [insertar imágenes](#insertar-imagenes).
-- [Insertar enlaces](#insertar-enlaces).
-- [Hacer anclaje](#hacer-anclaje).
-- [Insertar una línea de código](#insertar-una-linea-de-codigo).
-- [Insertar un bloque de código](#insertar-un-bloque-de-codigo).
-- [Resaltar el código](#resaltar-el-codigo).
-- [Insertar tablas](#insertar-tablas).
-- [Otras referencias sobre Markdown](#otras-referencias-sobre-markdown).
+- [Características del EEG](#caracteristicas-del-eeg).
+- [Aprendizaje Automático](#aprendizaje-automatico).
+- [Algoritmo de Clasificación: SVM](#algoritmo-de-clasificacion:-svm).
+- [Algoritmo de Clasificación: ANN](#algoritmo-de-clasificacion:-ann).
+- [Contenido de Carpeta: Análisis de Datos](#contenido-de-carpeta:-analisis-de-datos).
+- [Resultados de Clasificadores](#insertar-un-bloque-de-codigo).
+- [Descripción del Toolbox EEG Analysis](#descripcion-del-toolbox-eeg-analysis).
+- [Funciones del Toolbox EEG Analysis](#funciones-del-toolbox-eeg-analysis).
+- [Ejemplos de Funcionamiento del Toolbox EEG Analysis](#ejemplos-de-funcionamiento-del-toolbox-eeg-analysis).
+- [Bibliografía](#bibliografia).
 
 ### Características del EEG
+### Aprendizaje Automático
+### Algoritmo de Clasificación: SVM
+### Algoritmo de Clasificación: ANN
+### Contenido de Carpeta: Análisis de Datos
+### Resultados de Clasificadores
+### Descripción del Toolbox EEG Analysis
+### Funciones del Toolbox EEG Analysis
+### Ejemplos de Funcionamiento del Toolbox EEG Analysis
+### Bibliografía
