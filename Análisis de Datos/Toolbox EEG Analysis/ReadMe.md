@@ -49,11 +49,14 @@ El botón visualizar, ver figura 4, entrega los resultados del toolbox machine l
 
 **4.  Conexión con Base de Datos HUMANA**
 
-El toolbox EEG Analysis se incluye en la interfaz de la base de datos HUMANA, creada por María Fernanda Pineda. Esta base de datos incluye señales biomédicas de pacientes con epilepsia del Centro de Epilepsia y Neurocirugía Funcional HUMANA, Guatemala. De cada paciente se obtuvieron variables cualitativas y cuantitativas que permitieron la clasificación y organización de datos, así como también las señales biomédicas de cada uno de los pacientes. Es importante mencionar que, para resguardar la
+El toolbox EEG Analysis se incluye en la interfaz de la base de datos HUMANA (figura 5), creada por María Fernanda Pineda.  Esta base de datos incluye señales biomédicas de pacientes con epilepsia del Centro de Epilepsia y Neurocirugía Funcional HUMANA, Guatemala. De cada paciente se obtuvieron variables cualitativas y cuantitativas que permitieron la clasificación y organización de datos, así como también las señales biomédicas de cada uno de los pacientes. Es importante mencionar que, para resguardar la
 privacidad de los pacientes, no se obtuvieron nombres u otra información que pudiera revelar su identificación.
 
 La base de da phpMyAdmin se utilizó para la creación de la base de datos relacional dentro del entorno de MySQL. La base de datos desarrollada consta de
 diferentes tablas en las que se puede almacenar información importante del paciente que un investigador necesita para clasificar y utilizar las señales almacenadas, información de las pruebas para realizar el análisis correspondiente para cada una de ellas, así como los datos de las pruebas almacenadas como archivos binarios y dato por dato de cada prueba.
+
+![](https://github.com/larivera-UVG/Datos-Epilepsia/blob/master/An%C3%A1lisis%20de%20Datos/Toolbox%20EEG%20Analysis/Im%C3%A1genes/ventana0_1.PNG)
+##### Figura 5. Ventana de Conexión a Base de Datos HUMANA
 
 ### Características del EEG, Análisis Directo y Análisis Wavelet
 El toolbox EEG Analysis toma en consideración dos tipos de análisis: análisis directo y análisis wavelet para la extracción de características. El primero tipo de análisis inlcuye las siguientes características del dominio del tiempo:
