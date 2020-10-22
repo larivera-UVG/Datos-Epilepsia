@@ -46,7 +46,7 @@ El botón visualizar, ver figura 4, entrega los resultados del toolbox machine l
 4. ** Conexión con Base de Datos HUMANA**
 El toolbox EEG Analysis se incluye en la interfaz de la base de datos HUMANA
 
-### Características del EEG
+### Características del EEG: Análisis Directo y Análisis Wavelet
 El toolbox EEG Analysis toma en consideración dos tipos de análisis: análisis directo y análisis wavelet para la extracción de características. El primero tipo de análisis inlcuye las siguientes características del dominio del tiempo:
 ```
 1. Cruces por zero (ZC)
