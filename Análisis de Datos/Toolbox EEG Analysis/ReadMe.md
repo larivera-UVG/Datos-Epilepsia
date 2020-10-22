@@ -1,8 +1,8 @@
 ## Toolbox EEG Analysis
 - [Descripción del Toolbox EEG Analysis](#descripcion-del-toolbox-eeg-analysis).
-- [Características del EEG: Análisis Directo y Análisis Wavelet](#caracteristicas-del-eeg-analisis-directo-y-analisis-wavelet).
+- [Características del EEG, Análisis Directo y Análisis Wavelet](#caracteristicas-del-eeg-analisis-directo-y-analisis-wavelet).
 - [Clasificadores](#clasificadores).
-- [Instalación del Toolbox EEG Analysis](#funciones-del-toolbox-eeg-analysis).
+- [Instalación del Toolbox EEG Analysis](#instalacion-del-toolbox-eeg-analysis).
 - [Ejemplos de Funcionamiento del Toolbox EEG Analysis](#ejemplos-de-funcionamiento-del-toolbox-eeg-analysis).
 
 ### Descripción del Toolbox EEG Analysis
@@ -46,7 +46,7 @@ El botón visualizar, ver figura 4, entrega los resultados del toolbox machine l
 4. ** Conexión con Base de Datos HUMANA**
 El toolbox EEG Analysis se incluye en la interfaz de la base de datos HUMANA
 
-### Características del EEG: Análisis Directo y Análisis Wavelet
+### Características del EEG, Análisis Directo y Análisis Wavelet
 El toolbox EEG Analysis toma en consideración dos tipos de análisis: análisis directo y análisis wavelet para la extracción de características. El primero tipo de análisis inlcuye las siguientes características del dominio del tiempo:
 ```
 1. Cruces por zero (ZC)
