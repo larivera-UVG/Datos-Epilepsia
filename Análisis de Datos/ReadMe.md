@@ -3,16 +3,9 @@ Se calcula que hay 50 millones de afectados por la epilepsia en todo el mundo. S
 
 Para ejemplificar su funcionamiento, en los resultados de este repositorio se utilizan señales EEG de tres diferentes bases de datos, “UBonn EEG Dataset”, “CHB-MIT” y datos obtenidos del Centro de Epilepsia y Neurocirugía Funcional (HUMANA). En todos los casos, se utilizan características del dominio del tiempo: varianza, valor medio absoluto, curtosis, cruces por cero, desviación estándar y adicionalmente se realiza un análisis de características del tiempo-escala mediante la descomposición Wavelet: potencia, curtosis, cruzes por cero, desviación estándar, valor medio absoluto y asimetría estadística.
 
-## Tabla de contenido
-- [Clasificadores](#clasificadores).
-- [Clustering](#clustering).
-- [Descripción del Toolbox EEG Analysis](#descripcion-del-toolbox-eeg-analysis).
-- [Instalación del Toolbox EEG Analysis](#funciones-del-toolbox-eeg-analysis).
-- [Ejemplos de Funcionamiento del Toolbox EEG Analysis](#ejemplos-de-funcionamiento-del-toolbox-eeg-analysis).
-
-## Extructura de las Carpetas
-##### Análisis de señales EEG de pacientes con epilepsia
+## Estructura de las Carpetas
 ```
+##### Análisis de señales EEG de pacientes con epilepsia
 .
 ├── _Clasificadores
 │   ├── SVM: Código MATLAB 
@@ -32,24 +25,24 @@ Para ejemplificar su funcionamiento, en los resultados de este repositorio se ut
 |   └── Graficar_Clusters
 |   └── VAT
 |   └── ZC
-├── _Resultados Finales
-│   ├── 2007-10-29-why-every-programmer-should-play-nethack.md
-│   └── 2009-04-26-barcamp-boston-4-roundup.md
-├── _sass
-│   ├── _base.scss
-│   └── _layout.scss
-├── _site
-├── .jekyll-metadata
-└── index.html # can also be an 'index.md' with valid front matter
+├── _Resultados Finales: Matrices de Confusión
+│   ├── HUMANA
+│   └── Physionet
+│   └── UBonn
+├── _Toolbox EEG Analysis
+│   ├── Imágenes
+│   └── _Códigos MATLAB
+|       └── Features
+|       └── Features_wavelet
+|       └── ZC
+|       └── EdfRead
+│   └── _Códigos MATLAB AppDesigner
+|       └── Procesamiento
+|       └── Features
+|       └── ClasificadorSVM
+|       └── ClasificadorRN
+├── _Wavelet
+|   ├── Wavelet: código MATLAB
+|   └── Imágenes sub-bandas Wavelets
 ```
-
-
-
-
-### Clustering
-
-
-### Descripción del Toolbox EEG Analysis
-### Instalación del Toolbox EEG Analysis
-### Ejemplos de Funcionamiento del Toolbox EEG Analysis
 
