@@ -21,7 +21,8 @@ En este proyecto se creó e implementó una base de datos relacional de señales
 │   └── pruebas_datos: Código MATLAB y MATLAB Figure
 ├── _Documentos
 │   ├── Protocolo de Tesis
-│   └── Tesis
+│   ├── Tesis
+│   └── Reporte Técnico
 ├── _Imágenes - ReadMe
 ├── _imagenes_servidor
 │   ├── config: Código PHP
