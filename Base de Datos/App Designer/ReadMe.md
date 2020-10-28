@@ -1,6 +1,6 @@
 ## Desarrollo del *Toolbox* y Base de Datos
 
-En esta carpeta se encuentra el desarrollo del *toolbox* utilizando AppDesigner dentro de MATLAB. El *toolbox* se encarga de conectar al usuario con la base de datos y permitir realizar consultas y escribir nueva información.
+En esta carpeta se encuentra el desarrollo del *toolbox* utilizando AppDesigner dentro de MATLAB. El *toolbox* se encarga de conectar al usuario con la base de datos, para luego realizar consultas y escribir nueva información.
 
 ### Tabla de Contenido
 1. [Requisitos](##Requisitos)
