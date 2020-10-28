@@ -3,7 +3,7 @@
 En este proyecto se creó e implementó una base de datos relacional de señales biomédicas de pacientes con epilepsia, utilizando *MySQL*. Adicionalmente, se desarrolló una herramienta de *software* o *toolbox* para enlazar la base de datos y Matlab. Dentro de la herramienta es posible agregar un nuevo paciente, consultar información de los pacientes y sus respectivas pruebas, así como agregar un nuevo archivo, y visualizar las pruebas, seleccionando sus respectivos canales y ventanas de tiempo.
 
 ## Distribución de carpetas
-``
+```
 ├── _App Designer
 │   ├── agregarpac: Código MATLAB 
 │   ├── consultas: Código MATLAB 
@@ -33,4 +33,4 @@ En este proyecto se creó e implementó una base de datos relacional de señales
     ├── datosImagen: Código PHP 
     ├── index: Código PHP 
     └── leerImagen: Código PHP
-``
+```
