@@ -1,5 +1,5 @@
 ### Funciones para Análisis de Señales Biomédicas
-En esta carpeta se encuentran 3 scripts y 6 funciones de MATLAB para analizar y procesar las señales biomédicas. Los scripts fueron adaptados para realizar las pruebas presentadas en la tesis que se detalla en la carpeta documentos. 
+En esta carpeta se encuentran funciones en formato ".m" (compatible con MATLAB) para analizar y procesar las señales biomédicas. Los scripts fueron adaptados para realizar las pruebas presentadas en la tesis que se detalla en la carpeta documentos. 
 
 ##### edfread
 
@@ -22,9 +22,12 @@ Esta función tiene como argumentos la señal biomédica, el tamaño de ventana,
 Ejemplo: si se desean extraer las 6 características el vector de opción sería el siguiente "[1,1,1,1,1,1]".
 
 ##### labelsGen
-##### Graficar_clusters
-##### VAT
-##### fcm
-##### k_means
 
+Esta función toma como argumentos el vector de características para entrenamiento y el vector de características para prueba y genera mediante el algoritmo k-means de 2 clases, el vector de etiquetas resultante de los vectores de características. Este vector puede utilizarse posteriormente en los scripts de los algoritmos de clasificación SVM y RB presentes en la carpeta de clasificadores. 
+
+##### VAT
+Esta función permite implementar el algoritmo VAT de un vector de características de cualquier dimensión. Este algoritmo facilita la visualización de clases presentes en la señal mediante distancias. Como resultado se obtiene una matriz coloreada, donde puede observarse en la diagonal principal un aproximado número de clusters (agrupamientos) que encuentra el algoritmo.
+
+##### fcm y k_means
+Estas funciones implementan los algoritmos de cluster  FCM (fuzzy c-means) y K-means(K medias). Como argumentos toman el vector de características de la señal y el número de clases que se desean y como resultado se obtiene un vector que contiene las características correspondientes a cada clase.
 
