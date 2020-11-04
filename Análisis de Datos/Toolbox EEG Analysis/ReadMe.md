@@ -1,4 +1,4 @@
-## Automated Analysis of Epileptic EEG Using a Toolbox
+## Automated Analysis of Epileptic EEG Toolbox
 - [Descripción del Toolbox EEG Analysis](#descripcion-del-toolbox-eeg-analysis).
 - [Características del EEG, Análisis Directo y Análisis Wavelet](#caracteristicas-del-eeg-analisis-directo-y-analisis-wavelet).
 - [Clasificadores](#clasificadores).
