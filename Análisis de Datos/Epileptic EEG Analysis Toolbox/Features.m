@@ -96,16 +96,16 @@ for i=1:canales
   totfeatures(:,i+a:((i+a)+3)) = [desviacion(:,i),curtosis(:,i),zc(:,i),mav(:,i)];
   a=a+3;
 end
-resta=0;
+resta=1;
 for j=1:canales
 for i=1:4
-   if op(i)==0 
-       totfeatures(:,i-resta)=[]; %eliminar columna no deseada
-       resta=1;   %restar dimension
+   if op(i)==1 
+       vfeatures(:,resta) = totfeatures(:,i); %eliminar columna no deseada
+       resta=resta+1;  
    end
 end
-resta=0;
+
 end
-Matriz_features = totfeatures;
+Matriz_features = vfeatures;
 end
 

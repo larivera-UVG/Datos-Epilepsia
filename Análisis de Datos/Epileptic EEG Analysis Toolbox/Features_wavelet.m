@@ -87,13 +87,13 @@ elseif banda==8
 end
 %concatenar features en una matriz
 features =  [power,media,desviacion,curtosis,oblicuidad,zc];
-a=0;
+a=1;
 b=0;
 index= zeros(1,6);
 for i=1:6    
-    if op(i)==0
-       features(:,i-a)=[]; %eliminar columna no deseada
-       a=1;   %restar dim a feature vector 
+    if op(i)==1
+       vftures(:,a) = features(:,i); 
+       a=a+1;  
        
     end
     if op(i)==1
@@ -122,7 +122,7 @@ for i=1:length(index)
    end
 end
 tag = [tag1,tag2,tag3,tag4,tag5,tag6];
-M_features = features;
+M_features = vftures;
 coeff = cD;
 end
 
