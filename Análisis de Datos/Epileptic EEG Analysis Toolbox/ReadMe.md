@@ -1,4 +1,4 @@
-## Toolbox EEG Analysis
+## Epileptic EEG Analysis Toolbox
 - [Descripción del Toolbox EEG Analysis](#descripcion-del-toolbox-eeg-analysis).
 - [Características del EEG, Análisis Directo y Análisis Wavelet](#caracteristicas-del-eeg-analisis-directo-y-analisis-wavelet).
 - [Clasificadores](#clasificadores).
@@ -88,5 +88,8 @@ El algoritmo de clasificación ANN implementado en el toolbox, permite un clasif
 Puede encontrarse documentación acerca del toolbox deep learning en el siguiente [link](https://la.mathworks.com/help/deeplearning/ref/fitnet.html).
 
 ### Instalación del Toolbox EEG Analysis
-### Ejemplos de Funcionamiento del Toolbox EEG Analysis
-
+El Toolbox EEG Analysis es compatible con el entorno MATLAB 2019. Para empezar a utilizarlo, debe descagarse el contenido de esta carpeta.
+1. Abrir MATLAB y colocar esta carpeta como folder actual.
+2. En la consola escribe el comando **run('procesamiento')** y presiona enter. 
+3. Al abrise la ventana principal, presiona el botón cargar para seleccionar 
+el archivo EDF de la señal EEG a analizar.
