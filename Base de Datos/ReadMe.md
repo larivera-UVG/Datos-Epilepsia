@@ -38,25 +38,28 @@ En este proyecto se creó e implementó una base de datos relacional de señales
 ## Requisitos Generales
 Para poder implementar y utilizar la base de datos, la página web de interacción y el *toolbox* de MATLAB es necesario contar con las siguientes herramientas.
 ####  1. Servidor Apache
-![](https://github.com/larivera-UVG/Datos-Epilepsia/blob/master/Base%20de%20Datos/Im%C3%A1genes%20-%20ReadMe/apache.jpg)
+![](https://github.com/larivera-UVG/Datos-Epilepsia/blob/master/Base%20de%20Datos/Im%C3%A1genes%20-%20ReadMe/apache.jpg) 
+
 Apache es un *software* que se ejecuta en un servidor. Su trabajo es establecer una conexión entre un servidor y los navegadores de los visitantes del sitio web mientras se envían archivos entre ellos. Para instalarlo y habilitarlo:
 1. Descargar Apache desde https://httpd.apache.org/download.cgi, seleccionando el instalador para Windows seguido de la opción de *Apache Haus* y seleccionando la arquitectura de la computadora.
    1. Descargar adicionalmente el redistribuible de Microsoft Visual C++ 2015.
    2. Intalar el redistribuible descargado.
 2. Descomprimir carpeta descargada del sito de Apache.
 3. Cortar la carpeta Apache24 de la carpeta descargada y pegarla dentro del disco C:.
-4. Para instalarlo:
-   - Ejecutar el *CMD* como administrador.
-   - Acceder a la carpeta \Apache\bin\ .
-   - Escribir *httpd.exe* para permitir acceso.
-   - Escribir *httpd -k install* para instalar Apache.
-5. Para habilitarlo:
-   - Acceder a *Servicios* desde el buscador dentro de la computadora.
-   - Buscar Apache2.4.
-   - Iniciar el servicio.
-     - Para deshabilitarlo: *Detener el servicio*.
-   - Acceder a la dirección *localhost* desde un navegador web para verificar que el servidor esté habilitado.
-     - Si se desea cambiar la pantalla del *localhost*, acceder a la carpeta C:\Apache24\htdocs y editar el archivo index.
+4. Instalarlo:
+   1. Ejecutar el *CMD* como administrador.
+   2. Acceder a la carpeta \Apache\bin\ .
+   3. Escribir *httpd.exe* para permitir acceso.
+   4. Escribir *httpd -k install* para instalar Apache.
+5. Habilitarlo:
+   1. Acceder a *Servicios* desde el buscador dentro de la computadora.
+   2. Buscar Apache2.4.
+   3. Iniciar el servicio.
+      - Para deshabilitarlo: *Detener el servicio*.
+   4. Acceder a la dirección *localhost* desde un navegador web para verificar que el servidor esté habilitado.
+      - Si se desea cambiar la pantalla del *localhost*, acceder a la carpeta C:\Apache24\htdocs y editar el archivo index.
+6. Habilitar módulo *VHOSTS* para hospedar varios sitios en un mismo servidor: 
 ####  2. PHP
+![](https://github.com/larivera-UVG/Datos-Epilepsia/blob/master/Base%20de%20Datos/Im%C3%A1genes%20-%20ReadMe/php.jpg)
 ####  3. MySQL
 ####  4. phpMyAdmin
