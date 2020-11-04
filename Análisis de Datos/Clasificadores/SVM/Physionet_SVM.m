@@ -1,6 +1,6 @@
-%Cargar datos etiquetados de 5 pacientes de Physionet. Este workspace incluye data preseleccionada de 5 pacientes distintos.
+%Cargar datos etiquetados 2 pacientes de Physionet. Este workspace incluye data preseleccionada de 2 pacientes distintos.
 %Los datos se encuentran balanceados, la mitad de las muestras corresponden a registros normales y la mitad restante a registros ictales.
-load 'C:\Users\USUARIO\Downloads\Physionet EEG scalp database\Physionet_data_etiquetada.mat'
+load Physionet_datasets.mat
 
 Fs = 256;
 muestras=2500;  %cada 10s
@@ -8,35 +8,11 @@ canales = 2;
 op=1;
 comb = combnk(1:23,canales); %para eeg de 23 canales
 i=1;
-%Dejar un paciente afuera de train, para realizar testeo. 
-x =randi([1 5]);
-if x==1
-    datostrain = [chb01(:,1:length(chb01/2)),chb03(:,1:length(chb03/2)),chb08(:,1:length(chb08/2)),...
-        chb13(:,1:length(chb13/2)),chb01(:,length(chb01/2)+1:length(chb01)),chb03(:,length(chb03/2)+1:length(chb03))...
-        ,chb13(:,length(chb13/2)+1:length(chb13))];
-    datostest = chb15;
-elseif x==2
-    datostrain = [chb01(:,1:length(chb01/2)),chb03(:,1:length(chb03/2)),chb08(:,1:length(chb08/2)),...
-        chb15(:,1:length(chb15/2)),chb01(:,length(chb01/2)+1:length(chb01)),chb03(:,length(chb03/2)+1:length(chb03))...
-        ,chb08(:,length(chb08/2)+1:length(chb08)),chb15(:,length(chb15/2)+1:length(chb15))];
-    datostest = chb13;
-elseif x==3
-    datostrain = [chb01(:,1:length(chb01/2)),chb03(:,1:length(chb03/2)),chb13(:,1:length(chb13/2)),...
-        chb15(:,1:length(chb15/2)),chb01(:,length(chb01/2)+1:length(chb01)),chb03(:,length(chb03/2)+1:length(chb03))...
-        ,chb13(:,length(chb13/2)+1:length(chb13)),chb15(:,length(chb15/2)+1:length(chb15))];
-    datostest = chb08;
-elseif x==4
-    datostrain = [chb01(:,1:length(chb01/2)),chb08(:,1:length(chb08/2)),chb13(:,1:length(chb13/2)),...
-        chb15(:,1:length(chb15/2)),chb01(:,length(chb01/2)+1:length(chb01)),chb08(:,length(chb08/2)+1:length(chb08))...
-        ,chb13(:,length(chb13/2)+1:length(chb13)),chb15(:,length(chb15/2)+1:length(chb15))];
-    datostest = chb03;
-else
-    datostrain = [chb03(:,1:length(chb03/2)),chb08(:,1:length(chb08/2)),chb13(:,1:length(chb13/2)),...
-        chb15(:,1:length(chb15/2)),chb03(:,length(chb03/2)+1:length(chb03)),chb08(:,length(chb08/2)+1:length(chb08))...
-        ,chb13(:,length(chb13/2)+1:length(chb13)),chb15(:,length(chb15/2)+1:length(chb15))];
-    datostest = chb01;
-end
 %Si desea modificarse, cargar datos para entrenamiento en variable datostrain y datos de prueba en variable datostest.
+%Opcional dejar un paciente afuera de train, para realizar testeo. 
+%datostrain = ;
+%datostest = ;
+
 r=1;
 while (r<=length(comb))  
  if canales==2   
@@ -64,9 +40,13 @@ testlabel(:,i) = test_label;
   
  %Entrenamiento de SVM mediante dos kernels 
  % Linear Kernel
- model_linear = svmtrain(trainlabel(:,i), train_data, '-t 0 ');
+ model_linear = fitcsvm(train_data, trainlabel(:,i),'KernelFunction','linear','Standardize',true,...
+      'BoxConstraint',1,'ClassNames',[0,1]);
  % Testing model
- [predict_label_L(:,i), accuracy_L(:,i), dec_values_L] = svmpredict(testlabel(:,i), test_data, model_linear);
+ [predict_label_L(:,i),scores1] =  predict(model_linear, test_data);
+ matc1 = confusionmat(testlabel(:,i),predict_label_L(:,i));
+ s1 = sum(matc1);
+ accuracy_L(1,i) = 100*(matc1(1,1)+matc1(2,2))/(s1(1)+s1(2));
  % RBF Kernel 
  model_rbf = fitcsvm(train_data, trainlabel(:,i),'KernelFunction','rbf','Standardize',true,...
       'BoxConstraint',1,'ClassNames',[0,1]);
@@ -78,6 +58,7 @@ testlabel(:,i) = test_label;
   i = i+1
  max_accuracyrbf = max(accuracy_R(1,:))
  max_accuracylinear = max(accuracy_L(1,:))
+ %modificar exactitud para acelerar las iteraciones
  if  max_accuracylinear>89 && max_accuracyrbf>75
      break;
  end
