@@ -42,7 +42,7 @@ Para poder implementar y utilizar la base de datos, la página web de interacci�
 
 Apache es un *software* que se ejecuta en un servidor. Su trabajo es establecer una conexión entre un servidor y los navegadores de los visitantes del sitio web mientras se envían archivos entre ellos. Para instalarlo y habilitarlo:
 1. Descargar Apache desde https://httpd.apache.org/download.cgi, seleccionando el instalador para Windows seguido de la opción de *Apache Haus* y seleccionando la arquitectura de la computadora.
-   1. Descargar adicionalmente el redistribuible de Microsoft Visual C++ 2015.
+   1. Descargar adicionalmente la última versión del redistribuible de Microsoft Visual C++.
    2. Intalar el redistribuible descargado.
 2. Descomprimir carpeta descargada del sito de Apache.
 3. Cortar la carpeta Apache24 de la carpeta descargada y pegarla dentro del disco C:.
@@ -60,6 +60,21 @@ Apache es un *software* que se ejecuta en un servidor. Su trabajo es establecer 
       - Si se desea cambiar la pantalla del *localhost*, acceder a la carpeta C:\Apache24\htdocs y editar el archivo index.
 6. Habilitar módulo *VHOSTS* para hospedar varios sitios en un mismo servidor: 
 ####  2. PHP
-![](https://github.com/larivera-UVG/Datos-Epilepsia/blob/master/Base%20de%20Datos/Im%C3%A1genes%20-%20ReadMe/php.jpg)
+![](https://github.com/larivera-UVG/Datos-Epilepsia/blob/master/Base%20de%20Datos/Im%C3%A1genes%20-%20ReadMe/php.png)
+
+PHP es un lenguaje de programación de uso general que se adapta especialmente al desarrollo web. Para instalarlo e integrarlo al servidor:
+1. Descargar PHP desde https://www.php.net/downloads.php, seleccionando el instalador para Windows u la arquitectura de la computadora.
+2. Descomprimir carpeta descargada del sito de PHP.
+3. Cortar la carpeta ya descomprimida y pegarla dentro del disco C: (para facilitar su búsqueda se recomienda cambiar el nombre).
+4. Añadir *php* a las variables de entorno del sistema.
+   1. Abrir propiedades del sistema.
+   2. Abrir variable PATH de variables del sistema.
+   3. Añadir la ruta de de la carpeta de php: C:\php.
+5. Integrar PHP al servidor:
+   1. Acceder al archivo *httpd.conf* dentro de la carpeta C:\Apache24\conf
+   2. Cargar módulo de PHP para Apache2.4.
+   3. Guardar cambios en el archivo y reiniciar el servicio de Apache2.4.
+
+
 ####  3. MySQL
 ####  4. phpMyAdmin
