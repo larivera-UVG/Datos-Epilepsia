@@ -36,7 +36,12 @@ En este proyecto se creó e implementó una base de datos relacional de señales
     └── leerImagen: Código PHP
 ```
 ## Requisitos Generales
-Para poder implementar y utilizar la base de datos, la página web de interacción y el *toolbox* de MATLAB es necesario contar con las siguientes herramientas.
+Para poder implementar y utilizar la base de datos, la página web de interacción y el *toolbox* de MATLAB es necesario contar con las siguientes herramientas:
+1. [Servidor Apache](####Servidor-Apache)
+2. [PHP](####PHP)
+3. [MySQL](####MySQL)
+4. [phpMyAdmin](####phpMyAdmin)
+    
 ####  1. Servidor Apache
 ![](https://github.com/larivera-UVG/Datos-Epilepsia/blob/master/Base%20de%20Datos/Im%C3%A1genes%20-%20ReadMe/apache.jpg) 
 
