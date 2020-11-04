@@ -53,7 +53,7 @@ Apache es un *software* que se ejecuta en un servidor. Su trabajo es establecer 
 3. Cortar la carpeta Apache24 de la carpeta descargada y pegarla dentro del disco C:.
 4. Instalarlo:
    1. Ejecutar el *CMD* como administrador.
-   2. Acceder a la carpeta \Apache\bin\ .
+   2. Acceder a la carpeta \Apache\bin.
    3. Escribir *httpd.exe* para permitir acceso.
    4. Escribir *httpd -k install* para instalar Apache.
 5. Habilitarlo:
@@ -63,7 +63,8 @@ Apache es un *software* que se ejecuta en un servidor. Su trabajo es establecer 
       - Para deshabilitarlo: *Detener el servicio*.
    4. Acceder a la dirección *localhost* desde un navegador web para verificar que el servidor esté habilitado.
       - Si se desea cambiar la pantalla del *localhost*, acceder a la carpeta C:\Apache24\htdocs y editar el archivo index.
-6. Habilitar módulo *VHOSTS* para hospedar varios sitios en un mismo servidor: 
+6. Habilitar módulo *VHOSTS* para hospedar varios sitios en un mismo servidor.
+
 ####  2. PHP
 ![](https://github.com/larivera-UVG/Datos-Epilepsia/blob/master/Base%20de%20Datos/Im%C3%A1genes%20-%20ReadMe/php.png)
 
@@ -74,12 +75,69 @@ PHP es un lenguaje de programación de uso general que se adapta especialmente a
 4. Añadir *php* a las variables de entorno del sistema.
    1. Abrir propiedades del sistema.
    2. Abrir variable PATH de variables del sistema.
-   3. Añadir la ruta de de la carpeta de php: C:\php.
+   3. Añadir la ruta de de la carpeta de los binarios de PHP.
 5. Integrar PHP al servidor:
    1. Acceder al archivo *httpd.conf* dentro de la carpeta C:\Apache24\conf
    2. Cargar módulo de PHP para Apache2.4.
    3. Guardar cambios en el archivo y reiniciar el servicio de Apache2.4.
 
-
 ####  3. MySQL
+![](https://github.com/larivera-UVG/Datos-Epilepsia/blob/master/Base%20de%20Datos/Im%C3%A1genes%20-%20ReadMe/mysql.png)
+
+MySQL es un sistema de gestión de bases de datos relacionales de código abierto (RDBMS, por sus siglas en inglés) con un modelo cliente-servidor. Para instalarlo y habilitarlo:
+1. Descargar MySQL desde https://dev.mysql.com/downloads/windows/installer/8.0.html, seleccionando el instalador *offline*.
+2. Acceder al instalador de MySQL.
+   1. Seleccionar configuración personalizada.
+   2. Seleccionar los paquetes de MySQL Server, MySQL Workbench, MySQL Shell, MySQL Documentations y Samples and Examples.
+   3. Ejecutar instalación.
+   4. Presionar siguiente hasta que esté la opción de Método de Autenticación.
+   5. Seleccionar Método de Autenticación Heredado.
+   6. Ingresar contraseña del usuario administrador.
+   7. Presionar siguiente hasta que esté la opción de ajustes.
+   8. Ejecutar configuración.
+   9. Presionar siguiente hasta que esté la opción de conexión servidor.
+   10. Escribir nuevamente la contraseña.
+   11. Presionar siguiente.
+   12. Ejecutar configuración.
+   13. Finalizar.
+3. Añadir *mysql* a las variables de entorno del sistema.
+   1. Abrir propiedades del sistema.
+   2. Abrir variable PATH de variables del sistema.
+   3. Añadir la ruta de de la carpeta de los binarios del servidor de MySQL.
+   
 ####  4. phpMyAdmin
+![](https://github.com/larivera-UVG/Datos-Epilepsia/blob/master/Base%20de%20Datos/Im%C3%A1genes%20-%20ReadMe/phpmyadmin.png)
+
+phpMyAdmin es una herramienta escrita en PHP con la intención de manejar la administración de MySQL a través de páginas web, utilizando un navegador web. Para instalarlo e implementarlo:
+1. Descargar phpMyAdmin desde https://www.phpmyadmin.net/, seleccionando la opción de descargar que aparece en pantalla.
+2. Descomprimir carpeta descargada del sito de phpMyAdmin.
+3. Cortar la carpeta ya descomprimida y pegarla dentro de una carpeta dentro del disco C y cambiar el nombre a phpmyadmin.local.
+4. Crear una entrada hacia los hosts del servidor:
+   1. Ejecutar el *CMD* como administrador.
+   2. Acceder a la carpeta \drivers\etc\ .
+   3. Escribir *notepad hosts*.
+   4. Al final del archivo añadir *127.0.0.1 phpmyadmin.local*
+5. Acceder al archivo *httpd-vhosts.conf* dentro de la carpeta C:\Apache24\conf\extra
+6. Escribir bloque de código para implementar phpmyadmin.local.
+7. Reiniciar el servicio del servidor.
+8. Habilitar la librería *mysqli*:
+   1. Acceder a la carpeta de donde se encuentrar los binarios de php.
+   2. Copiar el archivo *php.ini-development*.
+   3. Pegar en la misma carpeta el archivo y renombrarlo a *php.ini*.
+   4. Abrir el archivo.
+   6. Buscar el término *mysqli* en todo el cocumento
+   7. Descomentar la línea de código donde se encuentra la extensión de la librería.
+   8. Reiniciar el servicio del servidor.
+   9. Acceder en el navegador web a la página httpd://phpmyadmin.local/setup
+   10. Entrar al error Bzip2.
+   11. Deshabilitar opciones GZip y Bzip2.
+   12. Actualizar.
+9. Configurar nuevo servidor (si se desea se puede trabajar con el usuario administrador de MySQL creando el usuario en el MySQL Shell):
+   1. Ejecutar el *CMD* como usuario regular.
+   2. Restaurar el backup de instalación de phpMyAdmin.
+   3. Acceder en el navegador web a la página httpd://phpmyadmin.local/setup
+   4. Configurar nuevo servidor con usuario y contraseña.
+   5. Aplicar configuración.
+   6. Cambiar el idioma a conveniencia.
+   7. Descargar archivo.
+   8. Cortar el archivo de descargas y pegar en la carpeta phpmyadmin.local.
