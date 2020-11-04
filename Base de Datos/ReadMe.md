@@ -38,7 +38,7 @@ En este proyecto se creó e implementó una base de datos relacional de señales
 ## Requisitos Generales
 Para poder implementar y utilizar la base de datos, la página web de interacción y el *toolbox* de MATLAB es necesario contar con las siguientes herramientas.
 ####  1. Servidor Apache
-![Logo de Apache](https://github.com/larivera-UVG/Datos-Epilepsia/tree/master/Base%20de%20Datos/Im%C3%A1genes%20-%20ReadMe/apache.jpg)
+![](https://github.com/larivera-UVG/Datos-Epilepsia/blob/master/Base%20de%20Datos/Im%C3%A1genes%20-%20ReadMe/apache.jpg)
 Apache es un *software* que se ejecuta en un servidor. Su trabajo es establecer una conexión entre un servidor y los navegadores de los visitantes del sitio web mientras se envían archivos entre ellos. Para instalarlo y habilitarlo:
 1. Descargar Apache desde https://httpd.apache.org/download.cgi, seleccionando el instalador para Windows seguido de la opción de *Apache Haus* y seleccionando la arquitectura de la computadora.
    1. Descargar adicionalmente el redistribuible de Microsoft Visual C++ 2015.
