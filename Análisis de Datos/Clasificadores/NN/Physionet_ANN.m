@@ -1,5 +1,5 @@
 %cargar datos etiquetados de 5 pacientes de Physionet
-load 'C:\Users\USUARIO\Downloads\Physionet EEG scalp database\Physionet_data_etiquetada.mat'
+%load Physionet_datasets.mat
 
 Fs = 256;
 muestras=2500;  %cada 10s
@@ -8,34 +8,9 @@ op=1;
 comb = combnk(1:23,canales); %para eeg de 23 canales
 i=1;
 %Dejar un paciente afuera de train, para realizar testeo
-x =randi([1 5]);
-if x==1
-    datostrain = [chb01(:,1:length(chb01/2)),chb03(:,1:length(chb03/2)),chb08(:,1:length(chb08/2)),...
-        chb13(:,1:length(chb13/2)),chb01(:,length(chb01/2)+1:length(chb01)),chb03(:,length(chb03/2)+1:length(chb03))...
-        ,chb13(:,length(chb13/2)+1:length(chb13))];
-    datostest = chb15;
-elseif x==2
-    datostrain = [chb01(:,1:length(chb01/2)),chb03(:,1:length(chb03/2)),chb08(:,1:length(chb08/2)),...
-        chb15(:,1:length(chb15/2)),chb01(:,length(chb01/2)+1:length(chb01)),chb03(:,length(chb03/2)+1:length(chb03))...
-        ,chb08(:,length(chb08/2)+1:length(chb08)),chb15(:,length(chb15/2)+1:length(chb15))];
-    datostest = chb13;
-
-elseif x==3
-    datostrain = [chb01(:,1:length(chb01/2)),chb03(:,1:length(chb03/2)),chb13(:,1:length(chb13/2)),...
-        chb15(:,1:length(chb15/2)),chb01(:,length(chb01/2)+1:length(chb01)),chb03(:,length(chb03/2)+1:length(chb03))...
-        ,chb13(:,length(chb13/2)+1:length(chb13)),chb15(:,length(chb15/2)+1:length(chb15))];
-    datostest = chb08;
-elseif x==4
-    datostrain = [chb01(:,1:length(chb01/2)),chb08(:,1:length(chb08/2)),chb13(:,1:length(chb13/2)),...
-        chb15(:,1:length(chb15/2)),chb01(:,length(chb01/2)+1:length(chb01)),chb08(:,length(chb08/2)+1:length(chb08))...
-        ,chb13(:,length(chb13/2)+1:length(chb13)),chb15(:,length(chb15/2)+1:length(chb15))];
-    datostest = chb03;
-else
-    datostrain = [chb03(:,1:length(chb03/2)),chb08(:,1:length(chb08/2)),chb13(:,1:length(chb13/2)),...
-        chb15(:,1:length(chb15/2)),chb03(:,length(chb03/2)+1:length(chb03)),chb08(:,length(chb08/2)+1:length(chb08))...
-        ,chb13(:,length(chb13/2)+1:length(chb13)),chb15(:,length(chb15/2)+1:length(chb15))];
-    datostest = chb01;
-end
+%indicar data edf para entrenamiento y testeo
+%datatrain = ;
+%datatest= ;
 r=1;
 while (r<=length(comb))  
  if canales==2   

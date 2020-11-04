@@ -54,36 +54,4 @@ end
  figure1= figure();
  cm1 = plotconfusion(test_label',predict_label_L',{'Matriz de confusion Kernel Lineal'},test_label',predict_label_R',{'Matriz de confusion Kernel RBF'});
  
- %Red neuronal 
- %load  UBonn_variablesparapruebasfinales.mat
-%  trainFcn = 'trainscg';  % Scaled conjugate gradient backpropagation.
-%  hiddenLayerSize = 10;
-%  
-% %train_data = train_data_DE_k4;
-% %train_label = train_label_DE_k4;
-% %test_data = test_data_DE_k4;
-% %test_label = test_label_DE_k4;
-% %se concatenan los vectores de feature(test y train)
-% %y los vectores de etiqueta(train y test)
-% features = [train_data;test_data];
-% labels = [train_label;test_label];
-% 
-% %Creacion de red neuronal
-% net = patternnet(hiddenLayerSize, trainFcn);
-% 
-% % Entrenar la red 
-% [net,tr] = train(net,features',labels');
-% % Setup Division of Data for Training, Validation, Testing
-% net.divideParam.trainRatio = 70/100;
-% net.divideParam.valRatio = 15/100;
-% net.divideParam.testRatio = 15/100;
-% 
-% % Testear la red
-% y = net(features'); 
-% 
-%  e = gsubtract(labels',y);
-%  performance = perform(net,labels',y);
-%  tind = vec2ind(labels');  
-%  yind = vec2ind(y);                      
-% percentErrors = sum(tind ~= yind)/numel(tind);
-% 
+ 
