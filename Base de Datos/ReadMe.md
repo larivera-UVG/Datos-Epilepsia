@@ -10,7 +10,10 @@ En este proyecto se creó e implementó una base de datos relacional de señales
 │   ├── logouvg: Imagen JPG
 │   ├── principal: Código MATLAB 
 │   ├── procesamiento: Código MATLAB 
-│   └── selectprueba: Código MATLAB 
+│   ├── selectprueba: Código MATLAB 
+│   ├── serialize: Código MATLAB
+│   ├── deserialize: Código MATLAB 
+│   └── edfread: Código MATLAB 
 ├── _Conexión con MATLAB
 │   ├── Ejemplo: Código MATLAB y MATLAB Figure
 │   ├── Escritura: Código MATLAB y MATLAB Figure
@@ -18,11 +21,28 @@ En este proyecto se creó e implementó una base de datos relacional de señales
 │   ├── lecturatxt: Código MATLAB 
 │   ├── license: Archivo de texto
 │   ├── principal: Código MATLAB y MATLAB Figure
-│   └── pruebas_datos: Código MATLAB y MATLAB Figure
+│   ├── pruebas_datos: Código MATLAB y MATLAB Figure
+│   └── edfread: Código MATLAB 
 ├── _Documentos
 │   ├── Protocolo de Tesis
 │   ├── Tesis
 │   └── Reporte Técnico
+├── _Epileptic EEG Analysis Toolbox
+│   ├── agregarpac: Código MATLAB 
+│   ├── consultas: Código MATLAB 
+│   ├── logouvg: Imagen JPG
+│   ├── principal: Código MATLAB 
+│   ├── procesamiento: Código MATLAB 
+│   ├── selectprueba: Código MATLAB 
+│   ├── Features: Código MATLAB 
+│   ├── Features_tipicas: Código MATLAB
+│   ├── ZC: Código MATLAB 
+│   ├── clasificadorRN: Código MATLAB
+│   ├── clasificadorSVM: Código MATLAB 
+│   ├── features: Código MATLAB 
+│   ├── serialize: Código MATLAB
+│   ├── deserialize: Código MATLAB 
+│   └── edfread: Código MATLAB 
 ├── _Imágenes - ReadMe
 ├── _imagenes_servidor
 │   ├── config: Código PHP
