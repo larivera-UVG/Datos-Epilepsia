@@ -13,6 +13,10 @@ El toolbox Epileptic EEG Analysis es una herramienta diseñada para facilitar el
 ├── _Instalación del Toolbox Epileptic EEG Analysis
 │   ├── Requerimientos
 ├── _Ejemplos de uso
+│   ├── Escritura de Nuevo Paciente
+│   ├── Consultas
+│   ├── Selección de DAta
+│   ├── Extraer Vector de Características
 │   ├── Implementar Clasificadores
 │   └── Exportación y Generación de Resultados
 ```
