@@ -15,14 +15,13 @@ Fs = fs;
 fred_electrica = designfilt('bandstopiir','FilterOrder',2, ...
                 'HalfPowerFrequency1',59,'HalfPowerFrequency2',61, ...
                 'DesignMethod','butter','SampleRate',Fs);
-fruido = designfilt('bandstopiir','FilterOrder',2, ...
-                'HalfPowerFrequency1',0.5,'HalfPowerFrequency2',70, ...
+fruido = designfilt('bandstopiir','FilterOrder',4, ...
+                'HalfPowerFrequency1',0.5,'HalfPowerFrequency2',60, ...
                 'DesignMethod','butter','SampleRate',Fs);
-lowpass = designfilt('lowpassiir','FilterOrder',8, ...
-         'PassbandFrequency',49,'PassbandRipple',0.2, ...
-         'SampleRate',Fs);
-channels = filtfilt(fred_electrica,eeg);    
-%channels = eeg;
+
+channels = filtfilt(fred_electrica,eeg);  
+%channels = filtfilt(fruido,eeg);  %contenido espectral EEG 0.5-60Hz
+
 %  for i=1:canales
 %      %Normalizar señales
 %      channels(:,i) = channels(:,i)/max(abs(channels(:,i)));
@@ -31,39 +30,48 @@ channels = filtfilt(fred_electrica,eeg);
 k=1;        %recorrer canales
 i=1;        %recorrer muestras
 j=0;
+j1=0;
 flag=0;
 size_c = length(channels);
 channel_ventana = zeros(size_c,canales);
-media = zeros(round(size_c/muestras)-1,canales);
-mav = zeros(round(size_c/muestras)-1,canales);
+if mod(size_c/muestras,1)~=0 %si es decimal
+    size_cint = round(size_c/muestras);
+    if size_cint>(size_c/muestras)
+        size_cint= size_cint-1;
+    end       
+else
+   size_cint = size_c/muestras; 
+end
+media = zeros(size_cint,canales);
+mav = zeros(size_cint,canales);
 z = zeros(length(eeg),canales);
-zc = zeros(round(size_c/muestras)-1,canales);
-fmax = zeros(round(size_c/muestras)-1,canales);
-desviacion = zeros(round(size_c/muestras)-1,canales);
-curtosis = zeros(round(size_c/muestras)-1,canales);
+zc = zeros(size_cint,canales);
+fmax = zeros(size_cint,canales);
+desviacion = zeros(size_cint,canales);
+curtosis = zeros(size_cint,canales);
 %zero crossing index function
 max_amplitud = max(abs(channels))*0.02; % 2% de la amplitud de la señal 
-umbral = max_amplitud(1,1);
+umbral = max(max_amplitud);
 for i=1:canales
    z(:,i) =  ZC(channels(:,i),umbral)'; %Calcular todos los ZC de la señal
 end
 while(1)
      
      channel_ventana(i,k) = channels(i,k); 
-        i = i+1;        
-        if(mod(i,(muestras+1))==0)      %Calcular caracteristicas de cada ventana
+     i = i+1;
+        if(mod(i,(muestras))==0)      %Calcular caracteristicas de cada ventana
             flag = flag+1;
             if op(1)==1
-                media(flag,k) = mean(channel_ventana(:,k));
+                media(flag,k) = mean(channel_ventana((j1*muestras)+1:i,k));
             elseif op(2) ==1
-                mav(flag,k) = mean(abs(channel_ventana(:,k)));
+                mav(flag,k) = mean(abs(channel_ventana((j1*muestras)+1:i,k)));
             elseif op(4)==1
-                picos = findpeaks(channel_ventana(:,k)');
-                fmax(flag,k)=max(picos);   
+                picos = findpeaks(channel_ventana((j1*muestras)+1:i,k)');
+                fmax(flag,k)=max(abs(picos)); 
             elseif op(5)==1
-                desviacion(flag,k) = std(channel_ventana(:,k));    
+                desviacion(flag,k) = std(channel_ventana((j1*muestras)+1:i,k));    
             elseif op(6)==1
-                 curtosis(flag,k) = kurtosis(channel_ventana(:,k));
+                 curtosis(flag,k) = kurtosis(channel_ventana((j1*muestras)+1:i,k));
             elseif op(3)==1
             if(j>0) %contar ZC por cada ventana
                 for o=1:canales
@@ -75,8 +83,10 @@ while(1)
                 end 
             end
             j= j+1;
-            end   
+            end 
+            j1=j1+1; 
         end
+         
      if (i==size_c) 
             k=k+1;
             flag=0;
@@ -86,6 +96,7 @@ while(1)
      if(k>canales)
             break;
      end
+   
 end
 %Concatenar vector de características
 a=0;

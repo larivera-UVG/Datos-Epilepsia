@@ -7,7 +7,6 @@ canales = 2;
 op=1;
 comb = combnk(1:23,canales); %para eeg de 23 canales
 i=1;
-%Dejar un paciente afuera de train, para realizar testeo
 %indicar data edf para entrenamiento y testeo
 %datatrain = ;
 %datatest= ;

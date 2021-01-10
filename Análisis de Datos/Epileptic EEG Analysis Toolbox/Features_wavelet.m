@@ -19,13 +19,21 @@ i=1;        %recorrer muestras
 flag=0;
 size_c = length(signal);
 channel_ventana = zeros(size_c,1);
-media = zeros(round(size_c/muestras)-1,1);
-power = zeros(round(size_c/muestras)-1,1);
+if mod(size_c/muestras,1)~=0 %si es decimal
+    size_cint = round(size_c/muestras);
+    if size_cint>(size_c/muestras)
+        size_cint= size_cint-1;
+    end       
+else
+   size_cint = size_c/muestras; 
+end
+media = zeros(size_cint,1);
+power = zeros(size_cint,1);
 z = zeros(length(eeg),1);
-zc = zeros(round(size_c/muestras)-1,1);
-oblicuidad = zeros(round(size_c/muestras)-1,1);
-curtosis = zeros(round(size_c/muestras)-1,1);
-desviacion = std(round(size_c/muestras)-1,1);
+zc = zeros(size_cint,1);
+oblicuidad = zeros(size_cint,1);
+curtosis = zeros(size_cint,1);
+desviacion = std(size_cint,1);
 %zero crossing index function
 max_amplitud = max(abs(eeg))*0.02; % 2% de la amplitud de la señal 
 umbral = max_amplitud(1,1);
@@ -34,7 +42,7 @@ while(1)
      
      channel_ventana(i,1) = signal(i,1); 
         i = i+1;        
-        if(mod(i,(muestras+1))==0)      
+        if(mod(i,(muestras))==0)      
             flag = flag+1;
             %Calcular descomposición wavelet
             [C,L] = wavedec(channel_ventana(1+(j*muestras):(flag*muestras)),7,waveletFunction);
